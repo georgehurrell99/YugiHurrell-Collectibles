@@ -1,26 +1,267 @@
-import React,{useEffect,useMemo,useState}from"react";
-import{motion}from"framer-motion";
-const fallbackInventory=[
-{name:"Blue-Eyes White Dragon",set:"Legend of Blue Eyes White Dragon",code:"LOB-001",rarity:"Ultra Rare",type:"Monster",condition:"Near Mint",price:120,stock:1},
-{name:"Dark Magician",set:"Starter Deck: Yugi",code:"SDY-006",rarity:"Ultra Rare",type:"Monster",condition:"Light Play",price:45,stock:1},
-{name:"Red-Eyes Black Dragon",set:"Metal Raiders",code:"MRD-018",rarity:"Ultra Rare",type:"Monster",condition:"Very Light Play",price:80,stock:1},
-{name:"Ash Blossom & Joyous Spring",set:"Rarity Collection",code:"RA01-EN011",rarity:"Quarter Century Secret Rare",type:"Monster",condition:"Near Mint",price:35,stock:2},
-{name:"Infinite Impermanence",set:"Rarity Collection",code:"RA01-EN078",rarity:"Secret Rare",type:"Trap",condition:"Near Mint",price:10,stock:4},
-{name:"Super Polymerization",set:"Rarity Collection 5",code:"RA05-EN045",rarity:"Collector's Rare",type:"Spell",condition:"Mint",price:20,stock:1}
-];
-export default function App(){
-const[searchTerm,setSearchTerm]=useState("");const[selectedSet,setSelectedSet]=useState("All Sets");const[selectedRarity,setSelectedRarity]=useState("All Rarities");const[selectedType,setSelectedType]=useState("All Types");const[selectedCondition,setSelectedCondition]=useState("All Conditions");const[apiCards,setApiCards]=useState([]);const[apiStatus,setApiStatus]=useState("Fallback inventory active");const[showSinglesList,setShowSinglesList]=useState(false);const[showAdvancedFilters,setShowAdvancedFilters]=useState(false);
-useEffect(()=>{let active=true;async function loadCards(){try{const res=await fetch("https://db.ygoprodeck.com/api/v7/cardinfo.php");const result=await res.json();const mapped=result.data.slice(0,250).flatMap(card=>(card.card_sets||[]).slice(0,3).map(setInfo=>({name:card.name,set:setInfo.set_name||"Unknown Set",code:setInfo.set_code||"N/A",rarity:setInfo.set_rarity||"Unknown Rarity",type:card.type?.includes("Spell")?"Spell":card.type?.includes("Trap")?"Trap":"Monster",condition:"Reference Only",price:0,stock:0,referenceOnly:true})));if(active&&mapped.length){setApiCards(mapped);setApiStatus("YGOPRODeck reference data loaded")}}catch{if(active)setApiStatus("Fallback inventory active")}}loadCards();return()=>{active=false}},[]);
-const db=apiCards.length?apiCards:fallbackInventory;const setOptions=useMemo(()=>["All Sets",...new Set(db.map(c=>c.set))],[db]);const rarityOptions=useMemo(()=>["All Rarities",...new Set(db.map(c=>c.rarity))],[db]);const typeOptions=useMemo(()=>["All Types",...new Set(db.map(c=>c.type))],[db]);const conditionOptions=["All Conditions","Damaged","Played","Light Play","Very Light Play","Near Mint","Mint"];
-const filtered=useMemo(()=>{const term=searchTerm.toLowerCase();return db.filter(c=>`${c.name} ${c.set} ${c.code} ${c.rarity}`.toLowerCase().includes(term)&&(selectedSet==="All Sets"||c.set===selectedSet)&&(selectedRarity==="All Rarities"||c.rarity===selectedRarity)&&(selectedType==="All Types"||c.type===selectedType)&&(selectedCondition==="All Conditions"||c.condition===selectedCondition))},[searchTerm,selectedSet,selectedRarity,selectedType,selectedCondition,db]);const visible=filtered.slice(0,40);
-return <div><header style={{position:"sticky",top:0,zIndex:50,background:"rgba(5,3,3,.93)",borderBottom:"1px solid rgba(127,29,29,.5)"}}><div className="container" style={{display:"flex",alignItems:"center",justifyContent:"space-between",paddingTop:16,paddingBottom:16}}><div style={{display:"flex",alignItems:"center",gap:12}}><div style={{width:48,height:48,borderRadius:16,border:"1px solid rgba(214,169,77,.5)",display:"grid",placeItems:"center",fontWeight:900,color:"#d6a94d"}}>YH</div><div><div style={{fontWeight:900,fontSize:18}}>YugiHurrell</div><div style={{color:"#fca5a5",fontSize:12,letterSpacing:3}}>COLLECTIBLES</div></div></div><nav style={{display:"flex",gap:26,color:"#d4d4d8",fontSize:14}}><a href="#shop">Shop</a><a href="#live">Live Shows</a><a href="#sell">Sell / Trade</a><a href="#contact">Contact</a></nav></div></header><main><section style={{background:"linear-gradient(#2a0808,#050303,#000)",padding:"90px 0"}}><div className="container hero" style={{display:"grid",gridTemplateColumns:"1.05fr .95fr",gap:48,alignItems:"center"}}><motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}}><div style={{display:"inline-flex",gap:8,border:"1px solid rgba(248,113,113,.4)",borderRadius:999,padding:"8px 14px",background:"rgba(127,29,29,.3)",color:"#fde68a"}}>✨ Trading cards, sealed stock & collector pieces</div><h1 style={{fontSize:"clamp(44px,7vw,78px)",lineHeight:1,margin:"26px 0 18px",fontWeight:900}}>For collectors, duellists and fans.</h1><p style={{color:"#d4d4d8",fontSize:18,lineHeight:1.8,maxWidth:620}}>A UK-based collectibles brand specialising in Yu-Gi-Oh! sealed product, PSA slabs, collector singles and personal collection purchasing.</p><div style={{display:"flex",gap:14,flexWrap:"wrap",marginTop:30}}><a className="btn btn-primary" href="#shop">View Shop</a><a className="btn btn-dark" href="#sell">Submit Your Collection</a></div></motion.div><div className="card" style={{textAlign:"center",padding:50}}>
-  <img
-  src="/yugihurrell-logo.png"
-  alt="YugiHurrell Collectibles"
-  style={{
-    width: "100%",
-    maxWidth: 420,
-    borderRadius: 24,
-  }}
-/>
-    <h2 style={{margin:0,fontSize:36}}>YugiHurrell</h2><p style={{color:"#d6a94d",letterSpacing:4}}>COLLECTIBLES</p></div></div></section><section className="container" style={{padding:"60px 24px"}}><div className="grid" style={{gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))"}}><a className="card" href="https://www.whatnot.com/en-GB/user/yugihurrell" target="_blank" rel="noreferrer"><p style={{color:"#fca5a5",letterSpacing:3}}>LIVE SALES</p><h3>Whatnot</h3><p style={{color:"#a1a1aa"}}>Join live shows, auctions and stream events.</p></a><a className="card" href="https://www.ebay.co.uk/usr/YugiHurrell" target="_blank" rel="noreferrer"><p style={{color:"#fca5a5",letterSpacing:3}}>MARKETPLACE</p><h3>eBay Store</h3><p style={{color:"#a1a1aa"}}>Browse listed singles, slabs and sealed product.</p></a><a className="card" href="https://instagram.com/YugiHurrell" target="_blank" rel="noreferrer"><p style={{color:"#fca5a5",letterSpacing:3}}>COMMUNITY</p><h3>Instagram</h3><p style={{color:"#a1a1aa"}}>Follow new arrivals, stories and collection updates.</p></a></div></section><section id="shop" className="container" style={{padding:"60px 24px"}}><p style={{color:"#fca5a5",letterSpacing:4,fontWeight:800}}>SHOP</p><h2 style={{fontSize:44,marginTop:0}}>Shop YugiHurrell Collectibles</h2><div className="grid" style={{gridTemplateColumns:"repeat(auto-fit,minmax(210px,1fr))",marginBottom:36}}>{["Sealed Product","PSA Slabs","Single Cards","Accessories"].map(cat=><div className="card" key={cat}><h3>{cat}</h3><p style={{color:"#a1a1aa"}}>Browse or enquire about current availability.</p></div>)}</div><div className="card"><div style={{display:"flex",justifyContent:"space-between",gap:20,flexWrap:"wrap",alignItems:"end"}}><div><p style={{color:"#fca5a5",letterSpacing:4,fontWeight:800}}>SINGLES FINDER</p><h3 style={{fontSize:32,margin:"8px 0"}}>Search single cards by set and rarity</h3><p style={{color:"#a1a1aa"}}>Search by card name, set, code, rarity and type. Your own stock will control price, condition and availability.</p><p style={{color:"#fca5a5",fontSize:12,letterSpacing:2}}>{apiStatus}</p></div><div style={{display:"flex",gap:10,flexWrap:"wrap"}}><button className="btn btn-dark" onClick={()=>setShowAdvancedFilters(!showAdvancedFilters)}>{showAdvancedFilters?"Hide Filters":"Show Filters"}</button><button className="btn btn-dark" onClick={()=>{setSearchTerm("");setSelectedSet("All Sets");setSelectedRarity("All Rarities");setSelectedType("All Types");setSelectedCondition("All Conditions")}}>Reset</button></div></div><div style={{marginTop:20,border:"1px solid rgba(255,255,255,.1)",borderRadius:20,padding:18,background:"rgba(0,0,0,.25)"}}><input value={searchTerm} onChange={e=>setSearchTerm(e.target.value)} placeholder="Search card, code, set or rarity"/>{showAdvancedFilters&&<div className="grid" style={{gridTemplateColumns:"repeat(auto-fit,minmax(190px,1fr))",marginTop:14}}><select value={selectedSet} onChange={e=>setSelectedSet(e.target.value)}>{setOptions.map(o=><option key={o}>{o}</option>)}</select><select value={selectedRarity} onChange={e=>setSelectedRarity(e.target.value)}>{rarityOptions.map(o=><option key={o}>{o}</option>)}</select><select value={selectedType} onChange={e=>setSelectedType(e.target.value)}>{typeOptions.map(o=><option key={o}>{o}</option>)}</select><select value={selectedCondition} onChange={e=>setSelectedCondition(e.target.value)}>{conditionOptions.map(o=><option key={o}>{o}</option>)}</select></div>}<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,flexWrap:"wrap",marginTop:16,color:"#a1a1aa"}}><span>{filtered.length} cards found. Showing up to 40 when opened.</span><button className="btn btn-primary" onClick={()=>setShowSinglesList(!showSinglesList)}>{showSinglesList?"Hide Card List":"Show Card List"}</button></div></div>{showSinglesList&&<div style={{overflowX:"auto",marginTop:22}}><table style={{width:"100%",borderCollapse:"collapse",color:"#d4d4d8"}}><thead><tr style={{color:"#a1a1aa",textAlign:"left"}}><th>Card</th><th>Set</th><th>Rarity</th><th>Condition</th><th>Status</th></tr></thead><tbody>{visible.map(card=><tr key={`${card.name}-${card.set}-${card.rarity}`} style={{borderTop:"1px solid rgba(255,255,255,.1)"}}><td style={{padding:"14px 8px"}}><strong style={{color:"white"}}>{card.name}</strong><br/><small>{card.type} • {card.code}</small></td><td>{card.set}</td><td>{card.rarity}</td><td>{card.condition}</td><td style={{color:"#fca5a5",fontWeight:800}}>{card.referenceOnly?"Request Card":`£${card.price}`}</td></tr>)}</tbody></table></div>}</div></section><section id="live" className="container" style={{padding:"60px 24px"}}><div className="card"><p style={{color:"#fca5a5",letterSpacing:4}}>LIVE SHOWS</p><h2>Watch YugiHurrell live on Whatnot.</h2><p style={{color:"#a1a1aa"}}>Whatnot is used for live shows, auctions and live selling events — separate from the main shop section.</p><a className="btn btn-primary" href="https://www.whatnot.com/en-GB/user/yugihurrell" target="_blank" rel="noreferrer">Visit Whatnot Live Shows</a></div></section><section id="sell" className="container" style={{padding:"60px 24px"}}><div className="card"><p style={{color:"#fca5a5",letterSpacing:4}}>SELL / TRADE</p><h2>Submit your collection for review.</h2><p style={{color:"#a1a1aa"}}>Collectors can submit personal collections, slabs, sealed cases, booster boxes and rare singles for review.</p></div></section><section id="contact" className="container" style={{padding:"60px 24px",textAlign:"center"}}><div className="card"><h2>Ready to buy, sell or ask about stock?</h2><p style={{color:"#a1a1aa"}}>Contact YugiHurrell Collectibles for stock questions, collection reviews and sealed product enquiries.</p><div style={{display:"flex",justifyContent:"center",gap:12,flexWrap:"wrap"}}><a className="btn btn-primary" href="mailto:yugihurrell@gmail.com">Email YugiHurrell</a><a className="btn btn-dark" href="https://instagram.com/YugiHurrell" target="_blank" rel="noreferrer">Instagram</a></div></div></section></main><footer style={{borderTop:"1px solid rgba(255,255,255,.1)",padding:28,textAlign:"center",color:"#71717a"}}>© {new Date().getFullYear()} YugiHurrell Collectibles.</footer></div>}
+import React from "react";
+import { motion } from "framer-motion";
+
+export default function App() {
+  return (
+    <div
+      style={{
+        background: "#050303",
+        color: "white",
+        minHeight: "100vh",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      <header
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 50,
+          background: "rgba(5,3,3,.93)",
+          borderBottom: "1px solid rgba(127,29,29,.5)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1180,
+            margin: "0 auto",
+            padding: "16px 24px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <h2 style={{ margin: 0 }}>YugiHurrell</h2>
+            <p
+              style={{
+                margin: 0,
+                color: "#d6a94d",
+                letterSpacing: 4,
+                fontSize: 12,
+              }}
+            >
+              COLLECTIBLES
+            </p>
+          </div>
+
+          <nav
+            style={{
+              display: "flex",
+              gap: 20,
+              color: "#d4d4d8",
+            }}
+          >
+            <a href="#shop">Shop</a>
+            <a href="#live">Live Shows</a>
+            <a href="#sell">Sell / Trade</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section
+          style={{
+            padding: "90px 24px",
+            background: "linear-gradient(#2a0808,#050303,#000)",
+          }}
+        >
+          <div
+            style={{
+              maxWidth: 1180,
+              margin: "0 auto",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 48,
+              alignItems: "center",
+            }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <div
+                style={{
+                  display: "inline-block",
+                  padding: "8px 14px",
+                  borderRadius: 999,
+                  background: "rgba(127,29,29,.3)",
+                  border: "1px solid rgba(248,113,113,.4)",
+                  color: "#fde68a",
+                }}
+              >
+                Trading cards, slabs & sealed product
+              </div>
+
+              <h1
+                style={{
+                  fontSize: "72px",
+                  lineHeight: 1,
+                  marginTop: 24,
+                  marginBottom: 20,
+                }}
+              >
+                For collectors, duellists and fans.
+              </h1>
+
+              <p
+                style={{
+                  color: "#d4d4d8",
+                  fontSize: 18,
+                  lineHeight: 1.8,
+                }}
+              >
+                A UK-based collectibles brand specialising in Yu-Gi-Oh!
+                sealed product, PSA slabs, collector singles and personal
+                collection purchasing.
+              </p>
+            </motion.div>
+
+            <div
+              style={{
+                border: "1px solid rgba(127,29,29,.55)",
+                background: "#100707",
+                borderRadius: 28,
+                padding: 40,
+                textAlign: "center",
+              }}
+            >
+              <img
+                src="/yugihurrell-logo.png"
+                alt="YugiHurrell Collectibles"
+                style={{
+                  width: "100%",
+                  maxWidth: 420,
+                  borderRadius: 24,
+                }}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="shop"
+          style={{
+            maxWidth: 1180,
+            margin: "0 auto",
+            padding: "60px 24px",
+          }}
+        >
+          <h2 style={{ fontSize: 42 }}>Shop Categories</h2>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
+              gap: 20,
+              marginTop: 30,
+            }}
+          >
+            {[
+              "Sealed Product",
+              "PSA Slabs",
+              "Single Cards",
+              "Accessories",
+            ].map((item) => (
+              <div
+                key={item}
+                style={{
+                  border: "1px solid rgba(127,29,29,.55)",
+                  background: "#100707",
+                  borderRadius: 24,
+                  padding: 24,
+                }}
+              >
+                <h3>{item}</h3>
+                <p style={{ color: "#a1a1aa" }}>
+                  Browse or enquire about availability.
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section
+          id="live"
+          style={{
+            maxWidth: 1180,
+            margin: "0 auto",
+            padding: "60px 24px",
+          }}
+        >
+          <div
+            style={{
+              border: "1px solid rgba(127,29,29,.55)",
+              background: "#100707",
+              borderRadius: 24,
+              padding: 30,
+            }}
+          >
+            <h2>Whatnot Live Shows</h2>
+
+            <p style={{ color: "#a1a1aa" }}>
+              Live breaks, auctions and events hosted through Whatnot.
+            </p>
+
+            <a
+              href="https://www.whatnot.com/en-GB/user/yugihurrell"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: "inline-block",
+                marginTop: 20,
+                padding: "14px 22px",
+                borderRadius: 999,
+                background: "#d6a94d",
+                color: "black",
+                fontWeight: 700,
+              }}
+            >
+              Visit Whatnot
+            </a>
+          </div>
+        </section>
+
+        <section
+          id="sell"
+          style={{
+            maxWidth: 1180,
+            margin: "0 auto",
+            padding: "60px 24px",
+          }}
+        >
+          <div
+            style={{
+              border: "1px solid rgba(127,29,29,.55)",
+              background: "#100707",
+              borderRadius: 24,
+              padding: 30,
+            }}
+          >
+            <h2>Sell Your Collection</h2>
+
+            <p style={{ color: "#a1a1aa" }}>
+              Submit sealed product, slabs, binders and rare singles for review.
+            </p>
+          </div>
+        </section>
+
+        <section
+          id="contact"
+          style={{
+            maxWidth: 1180,
+            margin: "0 auto",
+            padding: "60px 24px",
+            textAlign: "center",
+          }}
+        >
+          <h2>Contact YugiHurrell Collectibles</h2>
+
+          <p style={{ color: "#a1a1aa" }}>
+            yugihurrell@gmail.com
+          </p>
+        </section>
+      </main>
+    </div>
+  );
+}
