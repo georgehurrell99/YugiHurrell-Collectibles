@@ -207,16 +207,15 @@ export default function App() {
     ],
   },
 ].map((item) => (
-             <a
+           <a
   key={item.title}
   href={
-  item.title === "Sealed Product"
-    ? "/sealed.html"
-    : item.title === "Graded Slabs"
-    ? "/slabs.html"
-    : "#"
-}
-}
+    item.title === "Sealed Product"
+      ? "/sealed.html"
+      : item.title === "Graded Slabs"
+      ? "/slabs.html"
+      : "#"
+  }
   style={{
     border: "1px solid rgba(127,29,29,.55)",
     background: "#100707",
