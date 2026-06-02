@@ -215,7 +215,20 @@ export default function App() {
                   padding: 24,
                 }}
               >
-                <h3>{item}</h3>
+                <h3>{item.title}</h3>
+
+<ul
+  style={{
+    marginTop: 12,
+    paddingLeft: 18,
+    color: "#a1a1aa",
+    lineHeight: 1.8,
+  }}
+>
+  {item.items.map((subItem) => (
+    <li key={subItem}>{subItem}</li>
+  ))}
+</ul>
                 <p style={{ color: "#a1a1aa" }}>
                   Browse or enquire about availability.
                 </p>
