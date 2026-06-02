@@ -309,6 +309,7 @@ export default function App() {
           >
             <h2>Sell Your Collection</h2>
         </section>
+          
         <section
           id="contact"
           style={{
