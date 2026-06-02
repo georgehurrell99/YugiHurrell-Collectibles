@@ -210,7 +210,7 @@ export default function App() {
   key={item.title}
   href={
   item.title === "Sealed Product"
-    ? "#sealed-product"
+    ? "/sealed.html"
     : item.title === "Graded Slabs"
     ? "#graded-slabs"
     : item.title === "Single Cards"
