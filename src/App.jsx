@@ -176,12 +176,13 @@ export default function App() {
   {
     title: "Graded Slabs",
     items: [
-      "PSA",
-      "CGC",
-      "BGS",
-      "ACE",
-      "TAG",
-    ],
+  "PSA",
+  "BGS",
+  "CGC",
+  "ACE",
+  "TAG",
+  "ARS",
+],
   },
   {
     title: "Single Cards",
