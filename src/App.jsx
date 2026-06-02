@@ -308,27 +308,7 @@ export default function App() {
             }}
           >
             <h2>Sell Your Collection</h2>
-
-            <p style={{ color: "#a1a1aa" }}>
-              Submit sealed product, slabs, binders and rare singles for review.
-            </p>
-          </div>
         </section>
-        <a
-          href="#contact"
-          style={{
-            display: "inline-block",
-            marginTop: 14,
-            color: "#d6a94d",
-            fontWeight: 700,
-          }}
-        >
-          Enquire
-        </a>
-      </div>
-    ))}
-  </div>
-</section>
         <section
           id="contact"
           style={{
