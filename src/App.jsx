@@ -162,11 +162,50 @@ export default function App() {
             }}
           >
             {[
-              "Sealed Product",
-              "Graded Slabs",
-              "Single Cards",
-              "Accessories",
-            ].map((item) => (
+  {
+    title: "Sealed Product",
+    items: [
+      "Booster Boxes",
+      "Booster Packs",
+      "Tins",
+      "Special Collections",
+      "Accessories",
+      "Pre-Orders",
+    ],
+  },
+  {
+    title: "Graded Slabs",
+    items: [
+      "PSA",
+      "CGC",
+      "BGS",
+      "ACE",
+      "TAG",
+    ],
+  },
+  {
+    title: "Single Cards",
+    items: [
+      "Monster Cards",
+      "Spell Cards",
+      "Trap Cards",
+      "Collector Rarities",
+      "Quarter Century Rares",
+      "Wanted List",
+    ],
+  },
+  {
+    title: "Accessories",
+    items: [
+      "Sleeves",
+      "Binders",
+      "Deck Boxes",
+      "Top Loaders",
+      "Storage",
+      "Display Cases",
+    ],
+  },
+].map((item) => (
               <div
                 key={item}
                 style={{
