@@ -126,7 +126,8 @@ backgroundSize: "28px 28px",
             <div
               style={{
                 border: "1px solid rgba(127,29,29,.55)",
-                background: "#100707",
+               background: "rgba(16,7,7,.88)",
+backdropFilter: "blur(4px)",
                 borderRadius: 28,
                 padding: 40,
                 textAlign: "center",
@@ -224,7 +225,8 @@ backgroundSize: "28px 28px",
   }
   style={{
     border: "1px solid rgba(127,29,29,.55)",
-    background: "#100707",
+   background: "rgba(16,7,7,.88)",
+backdropFilter: "blur(4px)",
     borderRadius: 24,
     padding: 24,
     textDecoration: "none",
@@ -266,7 +268,8 @@ backgroundSize: "28px 28px",
           <div
             style={{
               border: "1px solid rgba(127,29,29,.55)",
-              background: "#100707",
+              background: "rgba(16,7,7,.88)",
+backdropFilter: "blur(4px)",
               borderRadius: 24,
               padding: 30,
             }}
@@ -307,7 +310,8 @@ backgroundSize: "28px 28px",
           <div
             style={{
               border: "1px solid rgba(127,29,29,.55)",
-              background: "#100707",
+              background: "rgba(16,7,7,.88)",
+backdropFilter: "blur(4px)",
               borderRadius: 24,
               padding: 30,
             }}
