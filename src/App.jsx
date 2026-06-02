@@ -216,8 +216,6 @@ export default function App() {
     ? "/slabs.html"
     : "#"
 }
-    : item.title === "Single Cards"
-    ? "#single-cards"
     : "#accessories"
 }
   style={{
