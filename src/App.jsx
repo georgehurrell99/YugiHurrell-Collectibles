@@ -314,7 +314,53 @@ export default function App() {
             </p>
           </div>
         </section>
+<section
+  id="sealed-product"
+  style={{
+    maxWidth: 1180,
+    margin: "0 auto",
+    padding: "60px 24px",
+  }}
+>
+  <h2>Sealed Product</h2>
+  <p>Booster Boxes, Booster Packs, Tins, Special Collections, Accessories and Pre-Orders.</p>
+</section>
 
+<section
+  id="graded-slabs"
+  style={{
+    maxWidth: 1180,
+    margin: "0 auto",
+    padding: "60px 24px",
+  }}
+>
+  <h2>Graded Slabs</h2>
+  <p>PSA, BGS, CGC, ACE and other professionally graded cards.</p>
+</section>
+
+<section
+  id="single-cards"
+  style={{
+    maxWidth: 1180,
+    margin: "0 auto",
+    padding: "60px 24px",
+  }}
+>
+  <h2>Single Cards</h2>
+  <p>Search by card name, set, rarity and condition.</p>
+</section>
+
+<section
+  id="accessories"
+  style={{
+    maxWidth: 1180,
+    margin: "0 auto",
+    padding: "60px 24px",
+  }}
+>
+  <h2>Accessories</h2>
+  <p>Sleeves, binders, deck boxes, top loaders and storage solutions.</p>
+</section>
         <section
           id="contact"
           style={{
