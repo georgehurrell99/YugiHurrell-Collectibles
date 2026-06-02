@@ -307,8 +307,13 @@ export default function App() {
               padding: 30,
             }}
           >
-            <h2>Sell Your Collection</h2>
-        </section>
+         <h2>Sell Your Collection</h2>
+
+<p style={{ color: "#a1a1aa" }}>
+  Submit sealed product, slabs, binders and rare singles for review.
+</p>
+</div>
+</section>
           
         <section
           id="contact"
