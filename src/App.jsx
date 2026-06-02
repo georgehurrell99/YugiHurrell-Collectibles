@@ -163,7 +163,7 @@ export default function App() {
           >
             {[
               "Sealed Product",
-              "PSA Slabs",
+              "Graded Slabs",
               "Single Cards",
               "Accessories",
             ].map((item) => (
