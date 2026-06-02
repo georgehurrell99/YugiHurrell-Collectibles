@@ -216,7 +216,6 @@ export default function App() {
     ? "/slabs.html"
     : "#"
 }
-    : "#accessories"
 }
   style={{
     border: "1px solid rgba(127,29,29,.55)",
