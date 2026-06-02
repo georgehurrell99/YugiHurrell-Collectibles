@@ -209,14 +209,14 @@ export default function App() {
              <a
   key={item.title}
   href={
-    item.title === "Sealed Product"
-      ? "/sealed"
-      : item.title === "Graded Slabs"
-      ? "/slabs"
-      : item.title === "Single Cards"
-      ? "/singles"
-      : "/accessories"
-  }
+  item.title === "Sealed Product"
+    ? "#sealed-product"
+    : item.title === "Graded Slabs"
+    ? "#graded-slabs"
+    : item.title === "Single Cards"
+    ? "#single-cards"
+    : "#accessories"
+}
   style={{
     border: "1px solid rgba(127,29,29,.55)",
     background: "#100707",
