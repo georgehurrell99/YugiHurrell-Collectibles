@@ -5,7 +5,9 @@ export default function App() {
   return (
     <div
       style={{
-        background: "#050303",
+        background:
+  "radial-gradient(circle at center, rgba(120,45,10,.55), rgba(30,10,5,.95) 35%, #050303 70%), conic-gradient(from 180deg at center, #3b1608, #0b0503, #6b2a0c, #0b0503, #3b1608)",
+backgroundBlendMode: "overlay",
         color: "white",
         minHeight: "100vh",
         fontFamily: "Arial, sans-serif",
@@ -16,8 +18,12 @@ export default function App() {
           position: "sticky",
           top: 0,
           zIndex: 50,
-          background: "rgba(5,3,3,.93)",
-          borderBottom: "1px solid rgba(127,29,29,.5)",
+         background:
+  "linear-gradient(90deg, rgba(20,8,4,.98), rgba(70,20,8,.96), rgba(20,8,4,.98))",
+borderBottom: "1px solid rgba(214,169,77,.45)",
+backgroundImage:
+  "linear-gradient(90deg, rgba(214,169,77,.08) 1px, transparent 1px), linear-gradient(rgba(214,169,77,.08) 1px, transparent 1px)",
+backgroundSize: "28px 28px",
         }}
       >
         <div
