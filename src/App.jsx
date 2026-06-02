@@ -112,7 +112,7 @@ export default function App() {
                 }}
               >
                 A UK-based collectibles brand specialising in Yu-Gi-Oh!
-                sealed product, PSA slabs, collector singles and personal
+                sealed product, Graded slabs, collector singles and personal
                 collection purchasing.
               </p>
             </motion.div>
