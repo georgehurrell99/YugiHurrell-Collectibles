@@ -212,8 +212,10 @@ export default function App() {
   href={
   item.title === "Sealed Product"
     ? "/sealed.html"
-   item.title === "Graded Slabs"
-  ? "/slabs.html"
+    : item.title === "Graded Slabs"
+    ? "/slabs.html"
+    : "#"
+}
     : item.title === "Single Cards"
     ? "#single-cards"
     : "#accessories"
