@@ -206,15 +206,28 @@ export default function App() {
     ],
   },
 ].map((item) => (
-              <div
-                key={item}
-                style={{
-                  border: "1px solid rgba(127,29,29,.55)",
-                  background: "#100707",
-                  borderRadius: 24,
-                  padding: 24,
-                }}
-              >
+             <a
+  key={item.title}
+  href={
+    item.title === "Sealed Product"
+      ? "/sealed"
+      : item.title === "Graded Slabs"
+      ? "/slabs"
+      : item.title === "Single Cards"
+      ? "/singles"
+      : "/accessories"
+  }
+  style={{
+    border: "1px solid rgba(127,29,29,.55)",
+    background: "#100707",
+    borderRadius: 24,
+    padding: 24,
+    textDecoration: "none",
+    color: "white",
+    display: "block",
+    transition: "0.2s",
+  }}
+>
                 <h3>{item.title}</h3>
 
 <ul
@@ -232,7 +245,7 @@ export default function App() {
                 <p style={{ color: "#a1a1aa" }}>
                   Browse or enquire about availability.
                 </p>
-              </div>
+              </a>
             ))}
           </div>
         </section>
