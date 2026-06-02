@@ -71,7 +71,7 @@ export default function App() {
               maxWidth: 1180,
               margin: "0 auto",
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
               gap: 48,
               alignItems: "center",
             }}
@@ -129,11 +129,15 @@ export default function App() {
               <img
                 src="/yugihurrell-logo.png"
                 alt="YugiHurrell Collectibles"
-                style={{
-                  width: "100%",
-                  maxWidth: 420,
-                  borderRadius: 24,
-                }}
+               style={{
+  width: "100%",
+  maxWidth: 420,
+  minWidth: 0,
+  height: "auto",
+  display: "block",
+  margin: "0 auto",
+  borderRadius: 24,
+}}
               />
             </div>
           </div>
