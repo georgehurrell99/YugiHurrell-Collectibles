@@ -223,7 +223,7 @@ backdropFilter: "blur(4px)",
     ? "/slabs.html"
     : item.title === "Single Cards"
     ? "/singles.html"
-    : "#"
+    : "/accessories.html"
 }
   style={{
     border: "1px solid rgba(127,29,29,.55)",
