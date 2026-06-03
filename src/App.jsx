@@ -27,35 +27,35 @@ backgroundBlendMode: "overlay",
     boxShadow: "0 8px 30px rgba(0,0,0,.65)",
   }}
 >
-        <div
-          style={{
-            maxWidth: 1180,
-            margin: "0 auto",
-            padding: "16px 24px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-        <div>
-  <img
-    src="/yugihurrell-logo.png"
-    alt="YugiHurrell Collectibles"
-    style={{
-      width: 260,
-      maxWidth: "45vw",
-      display: "block",
-    }}
-  />
-    YugiHurrell
-  </h2>
+       <div
+  style={{
+    maxWidth: 1180,
+    margin: "0 auto",
+    padding: "16px 24px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  }}
+>
+  <div>
+    <img
+      src="/yugihurrell-logo.png"
+      alt="YugiHurrell Collectibles"
+      style={{
+        width: 260,
+        maxWidth: "45vw",
+        display: "block",
+      }}
+    />
+  </div>
 
-  <p
+  <nav
     style={{
-      margin: 0,
+      display: "flex",
+      gap: 20,
       color: "#d6a94d",
-      letterSpacing: 4,
-      fontSize: 12,
+      fontWeight: 600,
+      letterSpacing: 1,
     }}
   >
     COLLECTIBLES
