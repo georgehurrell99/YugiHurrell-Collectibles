@@ -217,12 +217,14 @@ backdropFilter: "blur(4px)",
            <a
   key={item.title}
   href={
-    item.title === "Sealed Product"
-      ? "/sealed.html"
-      : item.title === "Graded Slabs"
-      ? "/slabs.html"
-      : "#"
-  }
+  item.title === "Sealed Product"
+    ? "/sealed.html"
+    : item.title === "Graded Slabs"
+    ? "/slabs.html"
+    : item.title === "Single Cards"
+    ? "/singles.html"
+    : "#"
+}
   style={{
     border: "1px solid rgba(127,29,29,.55)",
    background: "rgba(16,7,7,.88)",
