@@ -289,7 +289,7 @@ backdropFilter: "blur(4px)",
       rel="noreferrer"
     >
       <img
-        src="/insta1.jpg"
+        src="/insta1.png"
         alt="Instagram Post"
         style={{
           width: "100%",
@@ -304,7 +304,7 @@ backdropFilter: "blur(4px)",
       rel="noreferrer"
     >
       <img
-        src="/insta2.jpg"
+        src="/insta2.png"
         alt="Instagram Post"
         style={{
           width: "100%",
@@ -319,7 +319,7 @@ backdropFilter: "blur(4px)",
       rel="noreferrer"
     >
       <img
-        src="/insta3.jpg"
+        src="/insta3.png"
         alt="Instagram Post"
         style={{
           width: "100%",
