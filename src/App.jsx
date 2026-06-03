@@ -20,7 +20,7 @@ backgroundBlendMode: "overlay",
     zIndex: 50,
 
     backgroundImage:
-      "linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url('/egyptian-header.jpg')",
+      "linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url('/egyptianheader.png')",
 
     backgroundSize: "cover",
 
