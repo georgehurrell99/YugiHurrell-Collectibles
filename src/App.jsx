@@ -6,7 +6,7 @@ export default function App() {
     <div
       style={{
         background:
-  "radial-gradient(circle at center, rgba(120,45,10,.55), rgba(30,10,5,.95) 35%, #050303 70%), conic-gradient(from 180deg at center, #3b1608, #0b0503, #6b2a0c, #0b0503, #3b1608)",
+  "radial-gradient(circle at 70% 30%, rgba(160,70,20,.28), transparent 35%), linear-gradient(180deg, #160604 0%, #050303 75%)",
 backgroundBlendMode: "overlay",
         color: "white",
         minHeight: "100vh",
@@ -41,17 +41,16 @@ backgroundBlendMode: "overlay",
             alignItems: "center",
           }}
         >
-         <div>
-  <h2
+        <div>
+  <img
+    src="/yugihurrell-logo.png"
+    alt="YugiHurrell Collectibles"
     style={{
-      margin: 0,
-      fontSize: 42,
-      fontFamily: "Cinzel, serif",
-      letterSpacing: 2,
-      color: "#ffffff",
-      textShadow: "0 2px 8px rgba(0,0,0,.6)",
+      width: 260,
+      maxWidth: "45vw",
+      display: "block",
     }}
-  >
+  />
     YugiHurrell
   </h2>
             <p
@@ -119,11 +118,16 @@ backgroundBlendMode: "overlay",
 
               <h1
                 style={{
-                  fontSize: "72px",
-                  lineHeight: 1,
-                  marginTop: 24,
-                  marginBottom: 20,
-                }}
+  fontSize: "clamp(44px, 6vw, 78px)",
+  lineHeight: 1.08,
+  marginTop: 24,
+  marginBottom: 20,
+  fontFamily: "Cinzel, serif",
+  letterSpacing: 1,
+  textTransform: "uppercase",
+  color: "#f5efe2",
+  textShadow: "0 4px 18px rgba(0,0,0,.75)",
+}}
               >
                 For collectors, duellists and fans.
               </h1>
@@ -139,6 +143,39 @@ backgroundBlendMode: "overlay",
                 sealed product, Graded slabs, collector singles and personal
                 collection purchasing.
               </p>
+              <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginTop: 28 }}>
+  <a
+    href="#shop"
+    style={{
+      display: "inline-block",
+      padding: "15px 26px",
+      borderRadius: 6,
+      background: "linear-gradient(90deg, #b9822b, #e0b85c)",
+      color: "black",
+      fontWeight: 700,
+      textDecoration: "none",
+      letterSpacing: 1,
+    }}
+  >
+    BROWSE SHOP →
+  </a>
+
+  <a
+    href="#sell"
+    style={{
+      display: "inline-block",
+      padding: "15px 26px",
+      borderRadius: 6,
+      border: "1px solid rgba(214,169,77,.75)",
+      color: "#d6a94d",
+      fontWeight: 700,
+      textDecoration: "none",
+      letterSpacing: 1,
+    }}
+  >
+    SELL YOUR COLLECTION
+  </a>
+</div>
             </motion.div>
 
             <div
