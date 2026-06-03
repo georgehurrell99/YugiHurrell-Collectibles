@@ -18,77 +18,66 @@ backgroundBlendMode: "overlay",
     position: "sticky",
     top: 0,
     zIndex: 50,
+    minHeight: 215,
     backgroundImage:
-      "linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.35)), url('/egyptianheader.png')",
+      "linear-gradient(rgba(0,0,0,.10), rgba(0,0,0,.15)), url('/egyptianheader.png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    borderBottom: "1px solid rgba(214,169,77,.55)",
-    boxShadow: "0 8px 30px rgba(0,0,0,.65)",
-  }}
->
-       <div
-  style={{
-    maxWidth: 1180,
-    margin: "0 auto",
-    padding: "16px 24px",
+    borderBottom: "1px solid rgba(214,169,77,.6)",
+    boxShadow: "0 8px 30px rgba(0,0,0,.7)",
     display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    alignItems: "flex-end",
   }}
 >
-  <div>
-    <img
-      src="/yugihurrell-logo.png"
-      alt="YugiHurrell Collectibles"
-      style={{
-        width: 260,
-        maxWidth: "45vw",
-        display: "block",
-      }}
-    />
-  </div>
-
-  <nav
+  <div
     style={{
-      display: "flex",
-      gap: 20,
-      color: "#d6a94d",
-      fontWeight: 600,
-      letterSpacing: 1,
+      width: "100%",
+      background: "linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.45), rgba(0,0,0,.65))",
+      borderTop: "1px solid rgba(214,169,77,.25)",
     }}
   >
-    COLLECTIBLES
-  </p>
-</div>
-            <p
-              style={{
-                margin: 0,
-                color: "#d6a94d",
-                letterSpacing: 4,
-                fontSize: 12,
-              }}
-            >
-              COLLECTIBLES
-            </p>
-          </div>
+    <div
+      style={{
+        maxWidth: 1180,
+        margin: "0 auto",
+        padding: "18px 24px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <a href="/" style={{ textDecoration: "none" }}>
+        <img
+          src="/yugihurrell-logo.png"
+          alt="YugiHurrell Collectibles"
+          style={{
+            width: 270,
+            maxWidth: "48vw",
+            display: "block",
+          }}
+        />
+      </a>
 
-         <nav
-  style={{
-    display: "flex",
-    gap: 20,
-    color: "#d6a94d",
-    fontWeight: 600,
-    letterSpacing: 1,
-  }}
->
-            <a href="#shop">Shop</a>
-            <a href="#live">Live Shows</a>
-            <a href="#sell">Sell / Trade</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        </div>
-      </header>
+      <nav
+        style={{
+          display: "flex",
+          gap: 28,
+          color: "#f5efe2",
+          fontWeight: 700,
+          letterSpacing: 1,
+          textTransform: "uppercase",
+          textShadow: "0 2px 8px rgba(0,0,0,.75)",
+        }}
+      >
+        <a href="#shop">Shop</a>
+        <a href="#live">Live Shows</a>
+        <a href="#sell">Sell / Trade</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
 
       <main>
         <section
