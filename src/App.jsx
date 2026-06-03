@@ -53,6 +53,18 @@ backgroundBlendMode: "overlay",
   />
     YugiHurrell
   </h2>
+
+  <p
+    style={{
+      margin: 0,
+      color: "#d6a94d",
+      letterSpacing: 4,
+      fontSize: 12,
+    }}
+  >
+    COLLECTIBLES
+  </p>
+</div>
             <p
               style={{
                 margin: 0,
