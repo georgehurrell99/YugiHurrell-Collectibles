@@ -47,23 +47,42 @@ backgroundBlendMode: "overlay",
         alignItems: "center",
       }}
     >
-      <a href="/" style={{ textDecoration: "none" }}>
-        <img
-          src="/yugihurrell-logo.png"
-          alt="YugiHurrell Collectibles"
-          style={{
-            width: 270,
-            maxWidth: "48vw",
-            display: "block",
-          }}
-        />
-      </a>
+     <div>
+  <h1
+    style={{
+      margin: 0,
+      fontFamily: "Cinzel, serif",
+      fontSize: "clamp(42px, 4vw, 72px)",
+      fontWeight: 700,
+      color: "#f2dfb0",
+      lineHeight: 1,
+      letterSpacing: 1,
+      textShadow:
+        "0 2px 4px rgba(0,0,0,.8), 0 0 12px rgba(214,169,77,.25)",
+    }}
+  >
+    YugiHurrell
+  </h1>
+
+  <div
+    style={{
+      color: "#d6a94d",
+      letterSpacing: 8,
+      fontSize: 14,
+      marginTop: 4,
+      textTransform: "uppercase",
+      fontWeight: 500,
+    }}
+  >
+    Collectibles
+  </div>
+</div>
 
       <nav
         style={{
           display: "flex",
-          gap: 28,
-          color: "#f5efe2",
+          gap: 36,
+          color: "#d6a94d",
           fontWeight: 700,
           letterSpacing: 1,
           textTransform: "uppercase",
