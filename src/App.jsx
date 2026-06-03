@@ -258,7 +258,96 @@ backdropFilter: "blur(4px)",
             ))}
           </div>
         </section>
+<section
+  style={{
+    maxWidth: 1180,
+    margin: "0 auto",
+    padding: "60px 24px",
+  }}
+>
+  <h2 style={{ fontSize: 42 }}>Latest From Instagram</h2>
 
+  <p
+    style={{
+      color: "#a1a1aa",
+      marginBottom: 30,
+    }}
+  >
+    Recent stock arrivals, graded slabs, collector singles and live show updates.
+  </p>
+
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+      gap: 20,
+    }}
+  >
+    <a
+      href="https://www.instagram.com/yugihurrell"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src="/insta1.jpg"
+        alt="Instagram Post"
+        style={{
+          width: "100%",
+          borderRadius: 20,
+        }}
+      />
+    </a>
+
+    <a
+      href="https://www.instagram.com/yugihurrell"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src="/insta2.jpg"
+        alt="Instagram Post"
+        style={{
+          width: "100%",
+          borderRadius: 20,
+        }}
+      />
+    </a>
+
+    <a
+      href="https://www.instagram.com/yugihurrell"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src="/insta3.jpg"
+        alt="Instagram Post"
+        style={{
+          width: "100%",
+          borderRadius: 20,
+        }}
+      />
+    </a>
+  </div>
+
+  <div style={{ marginTop: 30 }}>
+    <a
+      href="https://www.instagram.com/yugihurrell"
+      target="_blank"
+      rel="noreferrer"
+      style={{
+        display: "inline-block",
+        padding: "14px 22px",
+        borderRadius: 999,
+        background: "#d6a94d",
+        color: "black",
+        fontWeight: 700,
+        textDecoration: "none",
+      }}
+    >
+      Follow @YugiHurrell
+    </a>
+  </div>
+</section>
         <section
           id="live"
           style={{
