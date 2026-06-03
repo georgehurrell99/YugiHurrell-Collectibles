@@ -20,7 +20,7 @@ backgroundBlendMode: "overlay",
     zIndex: 50,
 
     backgroundImage:
-      "linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url('/egyptianheader.png')",
+  "linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), url('/egyptianheader.png')",
 
     backgroundSize: "cover",
 
@@ -41,8 +41,19 @@ backgroundBlendMode: "overlay",
             alignItems: "center",
           }}
         >
-          <div>
-            <h2 style={{ margin: 0 }}>YugiHurrell</h2>
+         <div>
+  <h2
+    style={{
+      margin: 0,
+      fontSize: 42,
+      fontFamily: "Cinzel, serif",
+      letterSpacing: 2,
+      color: "#ffffff",
+      textShadow: "0 2px 8px rgba(0,0,0,.6)",
+    }}
+  >
+    YugiHurrell
+  </h2>
             <p
               style={{
                 margin: 0,
@@ -55,13 +66,15 @@ backgroundBlendMode: "overlay",
             </p>
           </div>
 
-          <nav
-            style={{
-              display: "flex",
-              gap: 20,
-              color: "#d4d4d8",
-            }}
-          >
+         <nav
+  style={{
+    display: "flex",
+    gap: 20,
+    color: "#d6a94d",
+    fontWeight: 600,
+    letterSpacing: 1,
+  }}
+>
             <a href="#shop">Shop</a>
             <a href="#live">Live Shows</a>
             <a href="#sell">Sell / Trade</a>
