@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div
       style={{
-        background:
+  background:
   "radial-gradient(circle at 70% 30%, rgba(160,70,20,.28), transparent 35%), linear-gradient(180deg, #160604 0%, #050303 75%)",
 backgroundBlendMode: "overlay",
         color: "white",
