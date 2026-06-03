@@ -13,19 +13,24 @@ backgroundBlendMode: "overlay",
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <header
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 50,
-         background:
-  "linear-gradient(90deg, rgba(20,8,4,.98), rgba(70,20,8,.96), rgba(20,8,4,.98))",
-borderBottom: "1px solid rgba(214,169,77,.45)",
-backgroundImage:
-  "linear-gradient(90deg, rgba(214,169,77,.08) 1px, transparent 1px), linear-gradient(rgba(214,169,77,.08) 1px, transparent 1px)",
-backgroundSize: "28px 28px",
-        }}
-      >
+     <header
+  style={{
+    position: "sticky",
+    top: 0,
+    zIndex: 50,
+
+    backgroundImage:
+      "linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url('/egyptian-header.jpg')",
+
+    backgroundSize: "cover",
+
+    backgroundPosition: "center",
+
+    backgroundRepeat: "no-repeat",
+
+    borderBottom: "1px solid rgba(214,169,77,.45)",
+  }}
+>
         <div
           style={{
             maxWidth: 1180,
