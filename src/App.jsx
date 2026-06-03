@@ -18,14 +18,12 @@ backgroundBlendMode: "overlay",
     position: "sticky",
     top: 0,
     zIndex: 50,
-    minHeight: 215,
-    backgroundImage:
-      "linear-gradient(rgba(0,0,0,.10), rgba(0,0,0,.15)), url('/egyptianheader.png')",
+    minHeight: 220,
+    backgroundImage: "url('/egyptianheader.png')",
     backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundPosition: "center top",
     backgroundRepeat: "no-repeat",
-    borderBottom: "1px solid rgba(214,169,77,.6)",
-    boxShadow: "0 8px 30px rgba(0,0,0,.7)",
+    borderBottom: "1px solid rgba(214,169,77,.65)",
     display: "flex",
     alignItems: "flex-end",
   }}
@@ -33,66 +31,77 @@ backgroundBlendMode: "overlay",
   <div
     style={{
       width: "100%",
-      background: "linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.45), rgba(0,0,0,.65))",
+      background:
+        "linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.58), rgba(0,0,0,.78))",
       borderTop: "1px solid rgba(214,169,77,.25)",
     }}
   >
     <div
       style={{
-        maxWidth: 1180,
+        maxWidth: 1380,
         margin: "0 auto",
-        padding: "18px 24px",
+        padding: "18px 34px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        gap: 30,
       }}
     >
-     <div>
-  <h1
-    style={{
-      margin: 0,
-      fontFamily: "Cinzel, serif",
-      fontSize: "clamp(42px, 4vw, 72px)",
-      fontWeight: 700,
-      color: "#f2dfb0",
-      lineHeight: 1,
-      letterSpacing: 1,
-      textShadow:
-        "0 2px 4px rgba(0,0,0,.8), 0 0 12px rgba(214,169,77,.25)",
-    }}
-  >
-    YugiHurrell
-  </h1>
+      <a href="/" style={{ textDecoration: "none" }}>
+        <div>
+          <div
+            style={{
+              fontFamily: "Cinzel, serif",
+              fontSize: "clamp(38px, 4vw, 64px)",
+              fontWeight: 700,
+              color: "#e4c16f",
+              lineHeight: 0.9,
+              letterSpacing: 1,
+              textShadow: "0 2px 8px rgba(0,0,0,.9)",
+            }}
+          >
+            YugiHurrell
+          </div>
 
-  <div
-    style={{
-      color: "#d6a94d",
-      letterSpacing: 8,
-      fontSize: 14,
-      marginTop: 4,
-      textTransform: "uppercase",
-      fontWeight: 500,
-    }}
-  >
-    Collectibles
-  </div>
-</div>
+          <div
+            style={{
+              color: "#d6a94d",
+              letterSpacing: 8,
+              fontSize: 14,
+              marginTop: 10,
+              textTransform: "uppercase",
+              textShadow: "0 2px 6px rgba(0,0,0,.9)",
+            }}
+          >
+            Collectibles
+          </div>
+        </div>
+      </a>
 
       <nav
         style={{
           display: "flex",
-          gap: 36,
-          color: "#d6a94d",
+          gap: 34,
+          alignItems: "center",
           fontWeight: 700,
           letterSpacing: 1,
           textTransform: "uppercase",
-          textShadow: "0 2px 8px rgba(0,0,0,.75)",
+          fontSize: 16,
+          textShadow: "0 2px 8px rgba(0,0,0,.85)",
         }}
       >
-        <a href="#shop">Shop</a>
-        <a href="#live">Live Shows</a>
-        <a href="#sell">Sell / Trade</a>
-        <a href="#contact">Contact</a>
+        <a href="#shop" style={{ color: "#f5efe2", textDecoration: "none" }}>
+          Shop
+        </a>
+        <a href="#live" style={{ color: "#f5efe2", textDecoration: "none" }}>
+          Live Shows
+        </a>
+        <a href="#sell" style={{ color: "#f5efe2", textDecoration: "none" }}>
+          Sell / Trade
+        </a>
+        <a href="#contact" style={{ color: "#f5efe2", textDecoration: "none" }}>
+          Contact
+        </a>
       </nav>
     </div>
   </div>
