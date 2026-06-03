@@ -13,22 +13,18 @@ backgroundBlendMode: "overlay",
         fontFamily: "Arial, sans-serif",
       }}
     >
-     <header
+    <header
   style={{
     position: "sticky",
     top: 0,
     zIndex: 50,
-
     backgroundImage:
-  "linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), url('/egyptianheader.png')",
-
+      "linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.35)), url('/egyptianheader.png')",
     backgroundSize: "cover",
-
     backgroundPosition: "center",
-
     backgroundRepeat: "no-repeat",
-
-    borderBottom: "1px solid rgba(214,169,77,.45)",
+    borderBottom: "1px solid rgba(214,169,77,.55)",
+    boxShadow: "0 8px 30px rgba(0,0,0,.65)",
   }}
 >
         <div
