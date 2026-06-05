@@ -100,9 +100,9 @@ marginTop: 4,
         <a href="#live" style={{ color: "#f5efe2", textDecoration: "none" }}>
           Live Shows
         </a>
-        <a href="#sell.html" style={{ color: "#f5efe2", textDecoration: "none" }}>
-          Sell / Trade
-        </a>
+       <a href="/sell.html" style={{ color: "#f5efe2", textDecoration: "none" }}>
+  Sell / Trade
+</a>
         <a href="#contact" style={{ color: "#f5efe2", textDecoration: "none" }}>
           Contact
         </a>
@@ -203,7 +203,7 @@ marginTop: 4,
   </a>
 
   <a
-    href="#sell"
+    href="#sell.html"
     style={{
       display: "inline-block",
       padding: "15px 26px",
@@ -514,33 +514,7 @@ backdropFilter: "blur(4px)",
               Visit Whatnot
             </a>
           </div>
-        </section>
-
-        <section
-          id="sell"
-          style={{
-            maxWidth: 1180,
-            margin: "0 auto",
-            padding: "60px 24px",
-          }}
-        >
-          <div
-            style={{
-              border: "1px solid rgba(127,29,29,.55)",
-              background: "rgba(16,7,7,.88)",
-backdropFilter: "blur(4px)",
-              borderRadius: 24,
-              padding: 30,
-            }}
-          >
-         <h2>Sell Your Collection</h2>
-
-<p style={{ color: "#a1a1aa" }}>
-  Submit sealed product, slabs, binders and rare singles for review.
-</p>
-</div>
-</section>
-          
+        </section>      
         <section
           id="contact"
           style={{
