@@ -278,7 +278,7 @@ backdropFilter: "blur(4px)",
             {[
   {
     title: "Sealed Product",
-    image: "/sealedcategory.png",
+    image: "/sealed.png",
     items: [
       "Booster Boxes",
       "Booster Packs",
@@ -290,12 +290,12 @@ backdropFilter: "blur(4px)",
   },
   {
     title: "Graded Slabs",
-    image: "/slabscategory.png",
+    image: "/slabs.png",
     items: ["PSA", "BGS", "CGC", "ACE", "TAG", "ARS"],
   },
   {
     title: "Single Cards",
-    image: "/singlescategory.png",
+    image: "/singles.png",
     items: [
       "Monster Cards",
       "Spell Cards",
@@ -307,7 +307,7 @@ backdropFilter: "blur(4px)",
   },
   {
     title: "Accessories",
-    image: "/accessoriescategory.png",
+    image: "/accessories.png",
     items: [
       "Sleeves",
       "Binders",
