@@ -544,14 +544,24 @@ backdropFilter: "blur(4px)",
       borderRadius: 24,
       padding: 30,
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
-      gap: 20,
+      gridTemplateColumns: "repeat(5,1fr)",
+      gap: 12,
       textAlign: "center",
     }}
   >
     <div>
-      <h3 style={{ color: "#d6a94d" }}>✓ UK Based</h3>
-      <p style={{ color: "#a1a1aa" }}>
+     <h3
+  style={{
+    color: "#d6a94d",
+    fontSize: "18px",
+  }}
+>✓ UK Based</h3>
+      <p
+  style={{
+    color: "#a1a1aa",
+    fontSize: "14px",
+  }}
+>
         Collector-focused service based in the UK.
       </p>
     </div>
