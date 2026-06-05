@@ -152,7 +152,7 @@ marginTop: 4,
       "polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%)",
   }}
 >
-                Trading cards, slabs & sealed product
+                𓂀 Trading Cards • Slabs • Sealed Product 𓂀
               </div>
 
               <h1
