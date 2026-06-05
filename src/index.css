@@ -1,1 +1,83 @@
-body{margin:0;background:#050303;color:white;font-family:Arial,Helvetica,sans-serif}*{box-sizing:border-box}a{color:inherit;text-decoration:none}.container{max-width:1180px;margin:0 auto;padding:0 24px}.card{border:1px solid rgba(127,29,29,.55);background:#100707;border-radius:28px;padding:24px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 22px;font-weight:800;border:1px solid rgba(255,255,255,.12);cursor:pointer}.btn-primary{background:linear-gradient(90deg,#7f1d1d,#d6a94d,#e7dcc2);color:#050303}.btn-dark{background:rgba(0,0,0,.35);color:white;border-color:rgba(248,113,113,.35)}.grid{display:grid;gap:20px}@media(max-width:800px){nav{display:none!important}.hero{grid-template-columns:1fr!important}}input,select{padding:14px;border-radius:16px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);color:white;width:100%}
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #050303;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.card {
+  border: 1px solid rgba(127, 29, 29, 0.55);
+  background: #100707;
+  border-radius: 28px;
+  padding: 24px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #7f1d1d, #d6a94d, #e7dcc2);
+  color: #050303;
+}
+
+.btn-dark {
+  background: rgba(0, 0, 0, 0.35);
+  color: white;
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+@media (max-width: 800px) {
+  nav {
+    display: none !important;
+  }
+
+  .hero {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+input,
+select {
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+  width: 100%;
+}
