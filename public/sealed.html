@@ -35,20 +35,33 @@
     }
 
     .card{
-      background:#100707;
-      border:1px solid rgba(127,29,29,.55);
-      border-radius:20px;
-      padding:24px;
-    }
+  background:rgba(16,7,7,.88);
+  border:1px solid rgba(214,169,77,.25);
+  border-radius:24px;
+  padding:24px;
+  text-align:center;
+  transition:.25s;
+  backdrop-filter:blur(4px);
+  box-shadow:0 0 20px rgba(0,0,0,.35);
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  border-color:#d6a94d;
+  box-shadow:0 0 25px rgba(214,169,77,.2);
+}
 
     .card h2{
-      margin-top:0;
-    }
+  margin-top:16px;
+  color:#f5efe2;
+  font-size:24px;
+}
 
     .card p{
-      color:#a1a1aa;
-      line-height:1.6;
-    }
+  color:#d6a94d;
+  line-height:1.6;
+  font-weight:600;
+}
 
     .back{
       display:inline-block;
