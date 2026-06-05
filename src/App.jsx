@@ -132,9 +132,10 @@ marginTop: 4,
             }}
           >
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-           <div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+>
+  <div
   style={{
     display: "inline-block",
     padding: "10px 28px",
