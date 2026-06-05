@@ -109,12 +109,18 @@ marginTop: 4,
 </header>
 
       <main>
-        <section
-          style={{
-            padding: "90px 24px",
-            background: "linear-gradient(#2a0808,#050303,#000)",
-          }}
-        >
+       <section
+  style={{
+    padding: "90px 24px",
+    backgroundImage:
+      "linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.84)), url('/yugihero.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    borderTop: "1px solid rgba(214,169,77,.25)",
+    borderBottom: "1px solid rgba(214,169,77,.25)",
+  }}
+>
           <div
             style={{
               maxWidth: 1180,
