@@ -278,7 +278,7 @@ backdropFilter: "blur(4px)",
             {[
   {
     title: "Sealed Product",
-    image: "/sealedcategory.jpg",
+    image: "/sealedcategory.png",
     items: [
       "Booster Boxes",
       "Booster Packs",
