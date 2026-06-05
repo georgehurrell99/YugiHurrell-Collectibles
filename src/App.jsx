@@ -255,7 +255,17 @@ backdropFilter: "blur(4px)",
             padding: "60px 24px",
           }}
         >
-          <h2 style={{ fontSize: 42 }}>Shop Categories</h2>
+         <h2
+  style={{
+    fontSize: 42,
+    fontFamily: "Cinzel, serif",
+    color: "#d6a94d",
+    letterSpacing: 2,
+    textTransform: "uppercase",
+  }}
+>
+  Shop Categories
+</h2>
 
           <div
             style={{
@@ -331,9 +341,9 @@ backdropFilter: "blur(4px)",
     transition: "0.2s",
   }}
 >
-             <div
+           <div
   style={{
-    height: 150,
+    height: 190,
     marginBottom: 18,
     borderRadius: 18,
     overflow: "hidden",
@@ -347,7 +357,8 @@ backdropFilter: "blur(4px)",
     style={{
       width: "100%",
       height: "100%",
-      objectFit: "cover",
+      objectFit: "contain",
+      padding: 12,
       display: "block",
     }}
   />
