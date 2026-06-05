@@ -31,8 +31,8 @@ backgroundBlendMode: "overlay",
   <div
     style={{
       width: "100%",
-      background:
-        "linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.58), rgba(0,0,0,.78))",
+     background:
+  "linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.35), rgba(0,0,0,.55))",
       borderTop: "1px solid rgba(214,169,77,.25)",
     }}
   >
@@ -69,6 +69,7 @@ backgroundBlendMode: "overlay",
              letterSpacing: 6,
 fontSize: 11,
 marginTop: 4,
+              textAlign: "center",
               textTransform: "uppercase",
               textShadow: "0 2px 6px rgba(0,0,0,.9)",
             }}
