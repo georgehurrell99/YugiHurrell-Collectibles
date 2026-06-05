@@ -100,7 +100,7 @@ marginTop: 4,
         <a href="#live" style={{ color: "#f5efe2", textDecoration: "none" }}>
           Live Shows
         </a>
-        <a href="#sell" style={{ color: "#f5efe2", textDecoration: "none" }}>
+        <a href="#sell.html" style={{ color: "#f5efe2", textDecoration: "none" }}>
           Sell / Trade
         </a>
         <a href="#contact" style={{ color: "#f5efe2", textDecoration: "none" }}>
