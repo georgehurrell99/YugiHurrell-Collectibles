@@ -134,7 +134,7 @@ marginTop: 4,
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-            <div
+           <div
   style={{
     display: "inline-block",
     padding: "10px 28px",
@@ -152,9 +152,8 @@ marginTop: 4,
       "polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%)",
   }}
 >
-                𓂀 Trading Cards • Slabs • Sealed Product 𓂀
-              </div>
-
+   𓂀 Trading Cards • Slabs • Sealed Product 𓂀
+</div>
               <h1
                 style={{
   fontSize: "clamp(44px, 6vw, 78px)",
