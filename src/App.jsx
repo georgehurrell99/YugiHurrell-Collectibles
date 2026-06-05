@@ -530,6 +530,61 @@ backdropFilter: "blur(4px)",
             yugihurrell@gmail.com
           </p>
         </section>
+        <section
+  style={{
+    maxWidth: 1180,
+    margin: "0 auto",
+    padding: "30px 24px 80px",
+  }}
+>
+  <div
+    style={{
+      border: "1px solid rgba(214,169,77,.25)",
+      background: "rgba(16,7,7,.88)",
+      borderRadius: 24,
+      padding: 30,
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))",
+      gap: 20,
+      textAlign: "center",
+    }}
+  >
+    <div>
+      <h3 style={{ color: "#d6a94d" }}>✓ UK Based</h3>
+      <p style={{ color: "#a1a1aa" }}>
+        Collector-focused service based in the UK.
+      </p>
+    </div>
+
+    <div>
+      <h3 style={{ color: "#d6a94d" }}>✓ Fast Shipping</h3>
+      <p style={{ color: "#a1a1aa" }}>
+        Orders packed and dispatched quickly.
+      </p>
+    </div>
+
+    <div>
+      <h3 style={{ color: "#d6a94d" }}>✓ Secure Packaging</h3>
+      <p style={{ color: "#a1a1aa" }}>
+        Cards and sealed products protected properly.
+      </p>
+    </div>
+
+    <div>
+      <h3 style={{ color: "#d6a94d" }}>✓ Fair Market Valuations</h3>
+      <p style={{ color: "#a1a1aa" }}>
+        Competitive offers on collections and singles.
+      </p>
+    </div>
+
+    <div>
+      <h3 style={{ color: "#d6a94d" }}>✓ Trusted Collector</h3>
+      <p style={{ color: "#a1a1aa" }}>
+        Buying, selling and collecting Yu-Gi-Oh! products.
+      </p>
+    </div>
+  </div>
+</section>
       </main>
     </div>
   );
