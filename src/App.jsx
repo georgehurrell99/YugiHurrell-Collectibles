@@ -134,17 +134,24 @@ marginTop: 4,
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-            >
-              <div
-                style={{
-                  display: "inline-block",
-                  padding: "8px 14px",
-                  borderRadius: 999,
-                  background: "rgba(127,29,29,.3)",
-                  border: "1px solid rgba(248,113,113,.4)",
-                  color: "#fde68a",
-                }}
-              >
+            <div
+  style={{
+    display: "inline-block",
+    padding: "10px 28px",
+    background:
+      "linear-gradient(180deg, rgba(93,55,12,.95), rgba(58,33,7,.95))",
+    border: "1px solid rgba(214,169,77,.8)",
+    color: "#e4c16f",
+    fontFamily: "Cinzel, serif",
+    fontSize: 14,
+    letterSpacing: 1.5,
+    textTransform: "uppercase",
+    position: "relative",
+    boxShadow: "0 0 18px rgba(214,169,77,.15)",
+    clipPath:
+      "polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%)",
+  }}
+>
                 Trading cards, slabs & sealed product
               </div>
 
