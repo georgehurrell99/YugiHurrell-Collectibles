@@ -16,7 +16,7 @@ backgroundBlendMode: "overlay",
     <header
   style={{
     position: "sticky",
-    top: 0,
+    top: "-1px",
     left: 0,
     right: 0,
     margin: 0,
