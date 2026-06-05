@@ -268,6 +268,7 @@ backdropFilter: "blur(4px)",
             {[
   {
     title: "Sealed Product",
+    image: "/sealedcategory.png",
     items: [
       "Booster Boxes",
       "Booster Packs",
@@ -279,28 +280,24 @@ backdropFilter: "blur(4px)",
   },
   {
     title: "Graded Slabs",
-    items: [
-  "PSA",
-  "BGS",
-  "CGC",
-  "ACE",
-  "TAG",
-  "ARS",
-],
+    image: "/slabscategory.png",
+    items: ["PSA", "BGS", "CGC", "ACE", "TAG", "ARS"],
   },
   {
     title: "Single Cards",
+    image: "/singlescategory.png",
     items: [
       "Monster Cards",
       "Spell Cards",
       "Trap Cards",
       "Collector Rarities",
       "Quarter Century Rares",
-      "Wanted List",
+      "Request A Card",
     ],
   },
   {
     title: "Accessories",
+    image: "/accessoriescategory.png",
     items: [
       "Sleeves",
       "Binders",
@@ -334,6 +331,27 @@ backdropFilter: "blur(4px)",
     transition: "0.2s",
   }}
 >
+             <div
+  style={{
+    height: 150,
+    marginBottom: 18,
+    borderRadius: 18,
+    overflow: "hidden",
+    border: "1px solid rgba(214,169,77,.25)",
+    background: "#050303",
+  }}
+>
+  <img
+    src={item.image}
+    alt={item.title}
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      display: "block",
+    }}
+  />
+</div>
                 <h3>{item.title}</h3>
 
 <ul
