@@ -203,20 +203,20 @@ marginTop: 4,
   </a>
 
   <a
-    href="#sell.html"
-    style={{
-      display: "inline-block",
-      padding: "15px 26px",
-      borderRadius: 6,
-      border: "1px solid rgba(214,169,77,.75)",
-      color: "#d6a94d",
-      fontWeight: 700,
-      textDecoration: "none",
-      letterSpacing: 1,
-    }}
-  >
-    SELL YOUR COLLECTION
-  </a>
+  href="/sell.html"
+  style={{
+    display: "inline-block",
+    padding: "15px 26px",
+    borderRadius: 6,
+    border: "1px solid rgba(214,169,77,.75)",
+    color: "#d6a94d",
+    fontWeight: 700,
+    textDecoration: "none",
+    letterSpacing: 1,
+  }}
+>
+  SELL YOUR COLLECTION
+</a>
 </div>
             </motion.div>
 
