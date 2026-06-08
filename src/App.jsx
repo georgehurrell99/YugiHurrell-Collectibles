@@ -247,7 +247,52 @@ backdropFilter: "blur(4px)",
           </div>
         </section>
 
-        <section
+{/* SHOWCASE CARDS */}
+
+<section
+  style={{
+    maxWidth: 1180,
+    margin: "0 auto",
+    padding: "60px 24px",
+  }}
+>
+  <h2
+    style={{
+      fontSize: 42,
+      fontFamily: "Cinzel, serif",
+      color: "#d6a94d",
+      letterSpacing: 2,
+      textTransform: "uppercase",
+      textAlign: "center",
+      marginBottom: 30,
+    }}
+  >
+    Showcase Cards
+  </h2>
+
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit,minmax(350px,1fr))",
+      gap: 30,
+    }}
+  >
+    <div className="showcase-card">
+      <img src="/frontddsbewd.png" />
+      <img src="/ddsbewd.png" />
+      <img src="/rearddsbewd.png" />
+    </div>
+
+    <div className="showcase-card">
+      <img src="/frontddsdm.png" />
+      <img src="/ddsdm.png" />
+      <img src="/rearddsdm.png" />
+    </div>
+  </div>
+</section>
+
+<section
+  id="shop"
           id="shop"
           style={{
             maxWidth: 1180,
