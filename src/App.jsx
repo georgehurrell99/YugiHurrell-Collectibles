@@ -267,7 +267,7 @@ backdropFilter: "blur(4px)",
       marginBottom: 30,
     }}
   >
-    Showcase Cards
+    Grails
   </h2>
 
   <div
