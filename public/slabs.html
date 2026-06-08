@@ -9,11 +9,12 @@
     .container{max-width:1200px;margin:auto;padding:40px 20px}
     h1{font-size:48px;margin-bottom:10px}
     .sub{color:#d6a94d;margin-bottom:40px}
-   .grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:32px;
-}
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:32px;
+    }
 
     .card{
       background:rgba(16,7,7,.88);
@@ -43,61 +44,119 @@
       line-height:1.6;
     }
 
-    .grades{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center}
-    .grade{border:1px solid rgba(214,169,77,.45);border-radius:999px;padding:8px 12px;color:#d6a94d;font-weight:bold;font-size:14px}
-    .back{display:inline-block;margin-bottom:40px;color:#d6a94d;text-decoration:none;font-weight:bold}
-   .slab-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:22px;
-  margin-top:28px;
-}
+    .grades{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:16px;
+      justify-content:center;
+    }
 
-.slab-item{
-  background:#050303;
-  border:1px solid rgba(214,169,77,.25);
-  border-radius:20px;
-  padding:16px;
-  text-align:center;
-  transition:.25s;
-}
+    .grade{
+      border:1px solid rgba(214,169,77,.45);
+      border-radius:999px;
+      padding:8px 12px;
+      color:#d6a94d;
+      font-weight:bold;
+      font-size:14px;
+    }
 
-.slab-item:hover{
-  transform:translateY(-4px);
-  border-color:#d6a94d;
-  box-shadow:0 0 25px rgba(214,169,77,.2);
-}
+    .back{
+      display:inline-block;
+      margin-bottom:40px;
+      color:#d6a94d;
+      text-decoration:none;
+      font-weight:bold;
+    }
 
-.slab-item img{
-  width:100%;
-  height:360px;
-  object-fit:contain;
-  border-radius:14px;
-}
+    .slab-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:22px;
+      margin-top:28px;
+    }
 
-.slab-name{
-  color:white;
-  font-weight:bold;
-  margin-top:14px;
-}
+    .slab-item{
+      background:#050303;
+      border:1px solid rgba(214,169,77,.25);
+      border-radius:20px;
+      padding:16px;
+      text-align:center;
+      transition:.25s;
+    }
 
-.slab-price{
-  color:#d6a94d;
-  font-size:20px;
-  font-weight:bold;
-  margin-top:6px;
-}
+    .slab-item:hover{
+      transform:translateY(-4px);
+      border-color:#d6a94d;
+      box-shadow:0 0 25px rgba(214,169,77,.2);
+    }
 
-.buy-btn{
-  display:block;
-  margin-top:12px;
-  padding:11px;
-  border-radius:999px;
-  background:linear-gradient(90deg,#7f1d1d,#d6a94d);
-  color:black;
-  font-weight:bold;
-  text-decoration:none;
-}
+    .slab-item img{
+      width:100%;
+      height:360px;
+      object-fit:contain;
+      border-radius:14px;
+      cursor:pointer;
+    }
+
+    .slab-name{
+      color:white;
+      font-weight:bold;
+      margin-top:14px;
+    }
+
+    .slab-price{
+      color:#d6a94d;
+      font-size:20px;
+      font-weight:bold;
+      margin-top:6px;
+    }
+
+    .buy-btn{
+      display:block;
+      margin-top:12px;
+      padding:11px;
+      border-radius:999px;
+      background:linear-gradient(90deg,#7f1d1d,#d6a94d);
+      color:black;
+      font-weight:bold;
+      text-decoration:none;
+    }
+
+    .lightbox{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.95);
+      z-index:9999;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      overflow:auto;
+    }
+
+    .lightbox img{
+      max-width:95vw;
+      max-height:90vh;
+      object-fit:contain;
+      cursor:zoom-in;
+      transition:.25s;
+    }
+
+    .lightbox img.zoomed{
+      transform:scale(1.8);
+      cursor:zoom-out;
+    }
+
+    .close{
+      position:fixed;
+      top:20px;
+      right:28px;
+      color:#d6a94d;
+      font-size:44px;
+      cursor:pointer;
+      z-index:10000;
+    }
   </style>
 </head>
 
@@ -111,22 +170,23 @@
   <div class="grid">
 
     <div class="card">
-  <h2>PSA</h2>
-  <p>Professional Sports Authenticator graded cards.</p>
+      <h2>PSA</h2>
+      <p>Professional Sports Authenticator graded cards.</p>
 
- <div class="slab-grid">
-    <div class="slab-item"><img src="/mp24dmg.png"><div class="slab-name">Dark Magician Girl PSA 9</div><div class="slab-price">£49.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/qcrdmg.png"><div class="slab-name">Dark Magician Girl PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/qcrlobdm.png"><div class="slab-name">Dark Magician PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/qcrplant.png"><div class="slab-name">Predaplant PSA 10</div><div class="slab-price">£89.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/rp01gateguardian.png"><div class="slab-name">Gate Guardian PSA 9</div><div class="slab-price">£89.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/25thsummonedskull.png"><div class="slab-name">Summoned Skull PSA 9</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/bewdreprint.png"><div class="slab-name">Blue-Eyes White Dragon PSA 8</div><div class="slab-price">£99.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/blueeyesreprint.png"><div class="slab-name">Blue-Eyes White Dragon PSA 9</div><div class="slab-price">£99.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/godcards.png"><div class="slab-name">Egyptian God Card Set PSA 9</div><div class="slab-price">£149.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/goldredeyes.png"><div class="slab-name">Red-Eyes Black Dragon PSA 9</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
-  </div>
-</div>
+      <div class="slab-grid">
+        <div class="slab-item"><img src="/mp24dmg.png" onclick="openLightbox('/mp24dmg.png')"><div class="slab-name">Dark Magician Girl PSA 9</div><div class="slab-price">£49.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/qcrdmg.png" onclick="openLightbox('/qcrdmg.png')"><div class="slab-name">Dark Magician Girl PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/qcrlobdm.png" onclick="openLightbox('/qcrlobdm.png')"><div class="slab-name">Dark Magician PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/qcrplant.png" onclick="openLightbox('/qcrplant.png')"><div class="slab-name">Predaplant PSA 10</div><div class="slab-price">£89.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/rp01gateguardian.png" onclick="openLightbox('/rp01gateguardian.png')"><div class="slab-name">Gate Guardian PSA 9</div><div class="slab-price">£89.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/25thsummonedskull.png" onclick="openLightbox('/25thsummonedskull.png')"><div class="slab-name">Summoned Skull PSA 9</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/bewdreprint.png" onclick="openLightbox('/bewdreprint.png')"><div class="slab-name">Blue-Eyes White Dragon PSA 8</div><div class="slab-price">£99.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/blueeyesreprint.png" onclick="openLightbox('/blueeyesreprint.png')"><div class="slab-name">Blue-Eyes White Dragon PSA 9</div><div class="slab-price">£99.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/godcards.png" onclick="openLightbox('/godcards.png')"><div class="slab-name">Egyptian God Card Set PSA 9</div><div class="slab-price">£149.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/goldredeyes.png" onclick="openLightbox('/goldredeyes.png')"><div class="slab-name">Red-Eyes Black Dragon PSA 9</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
+      </div>
+    </div>
+
     <div class="card">
       <h2>BGS</h2>
       <p>Beckett graded slabs, including Black Label and sub-grade cards.</p>
@@ -140,29 +200,29 @@
       </div>
     </div>
 
-   <div class="card">
-  <h2>CGC</h2>
-  <p>CGC graded trading cards and collector slabs.</p>
+    <div class="card">
+      <h2>CGC</h2>
+      <p>CGC graded trading cards and collector slabs.</p>
 
-  <div class="slab-grid">
-    <div class="slab-item"><img src="/japsummonedskull.png"><div class="slab-name">Japanese Summoned Skull CGC 10</div><div class="slab-price">£49.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/zombieclown.png"><div class="slab-name">Clown Zombie CGC 9.5</div><div class="slab-price">£39.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/arcanadm.png"><div class="slab-name">Dark Magician CGC 9</div><div class="slab-price">£44.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/japdm.png"><div class="slab-name">Japanese Dark Magician CGC 8</div><div class="slab-price">£34.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/japdmg.png"><div class="slab-name">Japanese Dark Magician Girl CGC 10</div><div class="slab-price">£39.99</div><a class="buy-btn">Buy Now</a></div>
-    <div class="slab-item"><img src="/japredeyes.png"><div class="slab-name">Japanese Red-Eyes CGC 10</div><div class="slab-price">£49.99</div><a class="buy-btn">Buy Now</a></div>
-  </div>
-</div>
-    
-<div class="card">
-  <h2>MGC</h2>
-  <p>Majesty Grading Company graded Yu-Gi-Oh! slabs.</p>
+      <div class="slab-grid">
+        <div class="slab-item"><img src="/japsummonedskull.png" onclick="openLightbox('/japsummonedskull.png')"><div class="slab-name">Japanese Summoned Skull CGC 10</div><div class="slab-price">£49.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/zombieclown.png" onclick="openLightbox('/zombieclown.png')"><div class="slab-name">Clown Zombie CGC 9.5</div><div class="slab-price">£39.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/arcanadm.png" onclick="openLightbox('/arcanadm.png')"><div class="slab-name">Dark Magician CGC 9</div><div class="slab-price">£44.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/japdm.png" onclick="openLightbox('/japdm.png')"><div class="slab-name">Japanese Dark Magician CGC 8</div><div class="slab-price">£34.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/japdmg.png" onclick="openLightbox('/japdmg.png')"><div class="slab-name">Japanese Dark Magician Girl CGC 10</div><div class="slab-price">£39.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/japredeyes.png" onclick="openLightbox('/japredeyes.png')"><div class="slab-name">Japanese Red-Eyes CGC 10</div><div class="slab-price">£49.99</div><a class="buy-btn">Buy Now</a></div>
+      </div>
+    </div>
 
-  <div class="slab-grid">
-    <div class="slab-item"><img src="/mgcexodia.png"><div class="slab-name">Exodia Set MGC 8/9</div><div class="slab-price">£150.00</div><a class="buy-btn">Buy Now</a></div>
-  </div>
-</div>
-    
+    <div class="card">
+      <h2>MGC</h2>
+      <p>Majesty Grading Company graded Yu-Gi-Oh! slabs.</p>
+
+      <div class="slab-grid">
+        <div class="slab-item"><img src="/mgcexodia.png" onclick="openLightbox('/mgcexodia.png')"><div class="slab-name">Exodia Set MGC 8/9</div><div class="slab-price">£150.00</div><a class="buy-btn">Buy Now</a></div>
+      </div>
+    </div>
+
     <div class="card">
       <h2>ACE</h2>
       <p>ACE graded cards, including custom label slabs.</p>
@@ -199,5 +259,34 @@
 
   </div>
 </div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <span class="close" onclick="closeLightbox()">×</span>
+  <img id="lightboxImg" onclick="toggleZoom(event)">
+</div>
+
+<script>
+function openLightbox(src){
+  document.getElementById("lightboxImg").src = src;
+  document.getElementById("lightboxImg").classList.remove("zoomed");
+  document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeLightbox(){
+  document.getElementById("lightbox").style.display = "none";
+}
+
+function toggleZoom(event){
+  event.stopPropagation();
+  document.getElementById("lightboxImg").classList.toggle("zoomed");
+}
+
+function closeLightboxOutside(event){
+  if(event.target.id === "lightbox"){
+    closeLightbox();
+  }
+}
+</script>
+
 </body>
 </html>
