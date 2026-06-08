@@ -42,6 +42,50 @@
     .grades{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center}
     .grade{border:1px solid rgba(214,169,77,.45);border-radius:999px;padding:8px 12px;color:#d6a94d;font-weight:bold;font-size:14px}
     .back{display:inline-block;margin-bottom:40px;color:#d6a94d;text-decoration:none;font-weight:bold}
+    .slider{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  margin-top:20px;
+  padding-bottom:10px;
+}
+
+.slab-item{
+  min-width:220px;
+  background:#050303;
+  border:1px solid rgba(214,169,77,.25);
+  border-radius:18px;
+  padding:12px;
+}
+
+.slab-item img{
+  width:100%;
+  height:320px;
+  object-fit:contain;
+}
+
+.slab-name{
+  color:white;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.slab-price{
+  color:#d6a94d;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.buy-btn{
+  display:block;
+  margin-top:12px;
+  padding:10px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#7f1d1d,#d6a94d);
+  color:black;
+  font-weight:bold;
+  text-decoration:none;
+}
   </style>
 </head>
 
@@ -55,17 +99,22 @@
   <div class="grid">
 
     <div class="card">
-      <h2>PSA</h2>
-      <p>Professional Sports Authenticator graded cards.</p>
-      <div class="grades">
-        <span class="grade">PSA 10</span>
-        <span class="grade">PSA 9</span>
-        <span class="grade">PSA 8</span>
-        <span class="grade">PSA 7</span>
-        <span class="grade">PSA 6 & Below</span>
-      </div>
-    </div>
+  <h2>PSA</h2>
+  <p>Professional Sports Authenticator graded cards.</p>
 
+  <div class="slider">
+    <div class="slab-item"><img src="/mp24dmg.png"><div class="slab-name">Dark Magician Girl PSA 9</div><div class="slab-price">£49.99</div><a class="buy-btn">Buy Now</a></div>
+    <div class="slab-item"><img src="/qcrdmg.png"><div class="slab-name">Dark Magician Girl PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
+    <div class="slab-item"><img src="/qcrlobdm.png"><div class="slab-name">Dark Magician PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
+    <div class="slab-item"><img src="/qcrplant.png"><div class="slab-name">Predaplant PSA 10</div><div class="slab-price">£89.99</div><a class="buy-btn">Buy Now</a></div>
+    <div class="slab-item"><img src="/rp01gateguardian.png"><div class="slab-name">Gate Guardian PSA 9</div><div class="slab-price">£89.99</div><a class="buy-btn">Buy Now</a></div>
+    <div class="slab-item"><img src="/25thsummonedskull.png"><div class="slab-name">Summoned Skull PSA 9</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
+    <div class="slab-item"><img src="/bewdreprint.png"><div class="slab-name">Blue-Eyes White Dragon PSA 8</div><div class="slab-price">£99.99</div><a class="buy-btn">Buy Now</a></div>
+    <div class="slab-item"><img src="/blueeyesreprint.png"><div class="slab-name">Blue-Eyes White Dragon PSA 9</div><div class="slab-price">£99.99</div><a class="buy-btn">Buy Now</a></div>
+    <div class="slab-item"><img src="/godcards.png"><div class="slab-name">Egyptian God Card Set PSA 9</div><div class="slab-price">£149.99</div><a class="buy-btn">Buy Now</a></div>
+    <div class="slab-item"><img src="/goldredeyes.png"><div class="slab-name">Red-Eyes Black Dragon PSA 9</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
+  </div>
+</div>
     <div class="card">
       <h2>BGS</h2>
       <p>Beckett graded slabs, including Black Label and sub-grade cards.</p>
