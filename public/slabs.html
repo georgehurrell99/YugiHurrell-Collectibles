@@ -9,7 +9,11 @@
     .container{max-width:1200px;margin:auto;padding:40px 20px}
     h1{font-size:48px;margin-bottom:10px}
     .sub{color:#d6a94d;margin-bottom:40px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+   .grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:32px;
+}
 
     .card{
       background:rgba(16,7,7,.88);
@@ -42,44 +46,52 @@
     .grades{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center}
     .grade{border:1px solid rgba(214,169,77,.45);border-radius:999px;padding:8px 12px;color:#d6a94d;font-weight:bold;font-size:14px}
     .back{display:inline-block;margin-bottom:40px;color:#d6a94d;text-decoration:none;font-weight:bold}
-    .slider{
-  display:flex;
-  gap:16px;
-  overflow-x:auto;
-  margin-top:20px;
-  padding-bottom:10px;
+   .slab-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+  margin-top:28px;
 }
 
 .slab-item{
-  min-width:220px;
   background:#050303;
   border:1px solid rgba(214,169,77,.25);
-  border-radius:18px;
-  padding:12px;
+  border-radius:20px;
+  padding:16px;
+  text-align:center;
+  transition:.25s;
+}
+
+.slab-item:hover{
+  transform:translateY(-4px);
+  border-color:#d6a94d;
+  box-shadow:0 0 25px rgba(214,169,77,.2);
 }
 
 .slab-item img{
   width:100%;
-  height:320px;
+  height:360px;
   object-fit:contain;
+  border-radius:14px;
 }
 
 .slab-name{
   color:white;
   font-weight:bold;
-  margin-top:10px;
+  margin-top:14px;
 }
 
 .slab-price{
   color:#d6a94d;
   font-size:20px;
   font-weight:bold;
+  margin-top:6px;
 }
 
 .buy-btn{
   display:block;
   margin-top:12px;
-  padding:10px;
+  padding:11px;
   border-radius:999px;
   background:linear-gradient(90deg,#7f1d1d,#d6a94d);
   color:black;
@@ -102,7 +114,7 @@
   <h2>PSA</h2>
   <p>Professional Sports Authenticator graded cards.</p>
 
-  <div class="slider">
+ <div class="slab-grid">
     <div class="slab-item"><img src="/mp24dmg.png"><div class="slab-name">Dark Magician Girl PSA 9</div><div class="slab-price">£49.99</div><a class="buy-btn">Buy Now</a></div>
     <div class="slab-item"><img src="/qcrdmg.png"><div class="slab-name">Dark Magician Girl PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
     <div class="slab-item"><img src="/qcrlobdm.png"><div class="slab-name">Dark Magician PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
