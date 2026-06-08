@@ -10,10 +10,36 @@
     h1{font-size:48px;margin-bottom:10px}
     .sub{color:#d6a94d;margin-bottom:40px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-    .card{background:#100707;border:1px solid rgba(127,29,29,.55);border-radius:20px;padding:24px}
-    .card h2{margin-top:0}
-    .card p{color:#a1a1aa;line-height:1.6}
-    .grades{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+
+    .card{
+      background:rgba(16,7,7,.88);
+      border:1px solid rgba(214,169,77,.25);
+      border-radius:24px;
+      padding:24px;
+      text-align:center;
+      transition:.25s;
+      backdrop-filter:blur(4px);
+      box-shadow:0 0 20px rgba(0,0,0,.35);
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:#d6a94d;
+      box-shadow:0 0 25px rgba(214,169,77,.2);
+    }
+
+    .card h2{
+      margin-top:0;
+      color:#f5efe2;
+      font-size:28px;
+    }
+
+    .card p{
+      color:#a1a1aa;
+      line-height:1.6;
+    }
+
+    .grades{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center}
     .grade{border:1px solid rgba(214,169,77,.45);border-radius:999px;padding:8px 12px;color:#d6a94d;font-weight:bold;font-size:14px}
     .back{display:inline-block;margin-bottom:40px;color:#d6a94d;text-decoration:none;font-weight:bold}
   </style>
@@ -27,40 +53,41 @@
   <p class="sub">Browse professionally graded Yu-Gi-Oh! cards by grading company and grade.</p>
 
   <div class="grid">
+
     <div class="card">
       <h2>PSA</h2>
       <p>Professional Sports Authenticator graded cards.</p>
       <div class="grades">
-       <span class="grade">PSA 10</span>
-<span class="grade">PSA 9</span>
-<span class="grade">PSA 8</span>
-<span class="grade">PSA 7</span>
-<span class="grade">PSA 6 & Below</span>
+        <span class="grade">PSA 10</span>
+        <span class="grade">PSA 9</span>
+        <span class="grade">PSA 8</span>
+        <span class="grade">PSA 7</span>
+        <span class="grade">PSA 6 & Below</span>
       </div>
     </div>
 
     <div class="card">
-  <h2>BGS</h2>
-  <p>Beckett graded slabs, including Black Label and sub-grade cards.</p>
-  <div class="grades">
-    <span class="grade">BGS Black Label 10</span>
-    <span class="grade">BGS Pristine 10</span>
-    <span class="grade">BGS 9.5</span>
-    <span class="grade">BGS 9</span>
-    <span class="grade">BGS 8</span>
-    <span class="grade">BGS 7</span>
-  </div>
-</div>
+      <h2>BGS</h2>
+      <p>Beckett graded slabs, including Black Label and sub-grade cards.</p>
+      <div class="grades">
+        <span class="grade">BGS Black Label 10</span>
+        <span class="grade">BGS Pristine 10</span>
+        <span class="grade">BGS 9.5</span>
+        <span class="grade">BGS 9</span>
+        <span class="grade">BGS 8</span>
+        <span class="grade">BGS 7</span>
+      </div>
+    </div>
 
     <div class="card">
       <h2>CGC</h2>
       <p>CGC graded trading cards and collector slabs.</p>
       <div class="grades">
-       <span class="grade">CGC Pristine 10</span>
-<span class="grade">CGC Gem Mint 10</span>
-<span class="grade">CGC 9.5</span>
-<span class="grade">CGC 9</span>
-<span class="grade">CGC 8</span>
+        <span class="grade">CGC Pristine 10</span>
+        <span class="grade">CGC Gem Mint 10</span>
+        <span class="grade">CGC 9.5</span>
+        <span class="grade">CGC 9</span>
+        <span class="grade">CGC 8</span>
       </div>
     </div>
 
@@ -90,13 +117,14 @@
       <h2>ARS</h2>
       <p>ARS graded cards, popular with Japanese collector markets.</p>
       <div class="grades">
-       <span class="grade">ARS 10+</span>
-<span class="grade">ARS 10</span>
-<span class="grade">ARS 9</span>
-<span class="grade">ARS 8</span>
-<span class="grade">ARS 7 & Below</span>
+        <span class="grade">ARS 10+</span>
+        <span class="grade">ARS 10</span>
+        <span class="grade">ARS 9</span>
+        <span class="grade">ARS 8</span>
+        <span class="grade">ARS 7 & Below</span>
       </div>
     </div>
+
   </div>
 </div>
 </body>
