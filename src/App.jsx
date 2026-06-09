@@ -399,6 +399,21 @@ backdropFilter: "blur(4px)",
   <img
     src={item.image}
     alt={item.title}
+    {(item.title === "Single Cards" ||
+  item.title === "Accessories") && (
+  <div
+    style={{
+      textAlign: "center",
+      color: "#d6a94d",
+      fontSize: 12,
+      letterSpacing: 2,
+      marginTop: 8,
+      textTransform: "uppercase",
+    }}
+  >
+    Inventory Being Added
+  </div>
+)}
     style={{
       width: "100%",
       height: "100%",
@@ -408,7 +423,37 @@ backdropFilter: "blur(4px)",
     }}
   />
 </div>
-                <h3>{item.title}</h3>
+                <div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
+  }}
+>
+  <h3 style={{ margin: 0 }}>
+    {item.title}
+  </h3>
+
+  {(item.title === "Single Cards" ||
+    item.title === "Accessories") && (
+    <span
+      style={{
+        background: "rgba(214,169,77,.15)",
+        border: "1px solid rgba(214,169,77,.45)",
+        color: "#d6a94d",
+        padding: "4px 10px",
+        borderRadius: 999,
+        fontSize: 11,
+        fontWeight: 700,
+        letterSpacing: 1,
+        textTransform: "uppercase",
+      }}
+    >
+      Coming Soon
+    </span>
+  )}
+</div>
 
 <ul
   style={{
