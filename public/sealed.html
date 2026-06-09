@@ -5,79 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    body{
-      margin:0;
-      font-family:Arial,sans-serif;
-      background:#050303;
-      color:white;
-    }
-
-    .container{
-      max-width:1200px;
-      margin:auto;
-      padding:40px 20px;
-    }
-
-    h1{
-      font-size:48px;
-      margin-bottom:10px;
-    }
-
-    .sub{
-      color:#d6a94d;
-      margin-bottom:40px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
+    body{margin:0;font-family:Arial,sans-serif;background:#050303;color:white}
+    .container{max-width:1200px;margin:auto;padding:40px 20px}
+    h1{font-size:48px;margin-bottom:10px}
+    .sub{color:#d6a94d;margin-bottom:40px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 
     .card{
-  background:rgba(16,7,7,.88);
-  border:1px solid rgba(214,169,77,.25);
-  border-radius:24px;
-  padding:24px;
-  text-align:center;
-  transition:.25s;
-  backdrop-filter:blur(4px);
-  box-shadow:0 0 20px rgba(0,0,0,.35);
-}
+      background:rgba(16,7,7,.88);
+      border:1px solid rgba(214,169,77,.25);
+      border-radius:24px;
+      padding:24px;
+      text-align:center;
+      transition:.25s;
+      backdrop-filter:blur(4px);
+      box-shadow:0 0 20px rgba(0,0,0,.35);
+    }
 
-.card:hover{
-  transform:translateY(-4px);
-  border-color:#d6a94d;
-  box-shadow:0 0 25px rgba(214,169,77,.2);
-}
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:#d6a94d;
+      box-shadow:0 0 25px rgba(214,169,77,.2);
+    }
 
-    .card h2{
-  margin-top:16px;
-  color:#f5efe2;
-  font-size:24px;
-}
+    .card h2{margin-top:16px;color:#f5efe2;font-size:24px}
+    .card p{color:#d6a94d;line-height:1.6;font-weight:600}
 
-    .card p{
-  color:#d6a94d;
-  line-height:1.6;
-  font-weight:600;
-}
-.buy-btn{
-  background:linear-gradient(90deg,#b9822b,#e0b85c);
-  border:none;
-  color:#050303;
-  font-weight:700;
-  padding:12px 22px;
-  border-radius:10px;
-  cursor:pointer;
-  margin-top:10px;
-  width:100%;
-  transition:.2s;
-}
+    .buy-btn{
+      display:block;
+      background:linear-gradient(90deg,#b9822b,#e0b85c);
+      color:#050303;
+      font-weight:700;
+      padding:12px 22px;
+      border-radius:10px;
+      margin-top:10px;
+      width:100%;
+      transition:.2s;
+      text-decoration:none;
+    }
 
-.buy-btn:hover{
-  transform:translateY(-2px);
-}
+    .buy-btn:hover{transform:translateY(-2px)}
+
     .back{
       display:inline-block;
       margin-bottom:40px;
@@ -89,12 +57,9 @@
 </head>
 
 <body>
-
 <div class="container">
 
-<a class="back" href="/">
-← Back to Homepage
-</a>
+<a class="back" href="/">← Back to Homepage</a>
 
 <h1>Sealed Product</h1>
 
@@ -107,84 +72,52 @@ Browse sealed Yu-Gi-Oh! product available from YugiHurrell Collectibles.
 <div class="card">
   <img src="/ra05boosterbox.png" style="width:100%;height:260px;object-fit:contain;">
   <h2>RA05 Booster Box</h2>
-
   <p>£100.00</p>
-
   <p>15 In Stock</p>
-
-  <button class="buy-btn">
-    Purchase
-  </button>
+  <a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20the%20RA05%20Booster%20Box%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a>
 </div>
 
 <div class="card">
   <img src="/hero.png" style="width:100%;height:260px;object-fit:contain;">
   <h2>Limit Over Collection Hero</h2>
-
   <p>£90.00</p>
-
   <p>16 In Stock</p>
-
-  <button class="buy-btn">
-    Purchase
-  </button>
+  <a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Limit%20Over%20Collection%20Hero%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a>
 </div>
 
 <div class="card">
   <img src="/rivals.png" style="width:100%;height:260px;object-fit:contain;">
   <h2>Limit Over Collection Rival</h2>
-
   <p>£85.00</p>
-
   <p>25 In Stock</p>
-
-  <button class="buy-btn">
-    Purchase
-  </button>
+  <a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Limit%20Over%20Collection%20Rival%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a>
 </div>
 
 <div class="card">
   <img src="/monstermayhem.png" style="width:100%;height:260px;object-fit:contain;">
   <h2>Monster Mayhem</h2>
-
   <p>£55.00</p>
-
   <p>21 In Stock</p>
-
-  <button class="buy-btn">
-    Purchase
-  </button>
+  <a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Monster%20Mayhem%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a>
 </div>
 
 <div class="card">
   <img src="/gloriousgallery.png" style="width:100%;height:260px;object-fit:contain;">
   <h2>Glorious Gallery</h2>
-
   <p>£62.00</p>
-
   <p>24 In Stock</p>
-
-  <button class="buy-btn">
-    Purchase
-  </button>
+  <a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Glorious%20Gallery%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a>
 </div>
 
 <div class="card">
   <img src="/retropack2.png" style="width:100%;height:260px;object-fit:contain;">
   <h2>Retro Pack 2</h2>
-
   <p>£55.00</p>
-
   <p>5 In Stock</p>
-
-  <button class="buy-btn">
-    Purchase
-  </button>
+  <a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Retro%20Pack%202%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a>
 </div>
 
 </div>
-
 </div>
-
 </body>
 </html>
