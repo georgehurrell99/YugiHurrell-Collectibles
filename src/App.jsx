@@ -397,31 +397,16 @@ backdropFilter: "blur(4px)",
   }}
 >
   <img
-    src={item.image}
-    alt={item.title}
-    {(item.title === "Single Cards" ||
-  item.title === "Accessories") && (
-  <div
-    style={{
-      textAlign: "center",
-      color: "#d6a94d",
-      fontSize: 12,
-      letterSpacing: 2,
-      marginTop: 8,
-      textTransform: "uppercase",
-    }}
-  >
-    Inventory Being Added
-  </div>
-)}
-    style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "contain",
-      padding: 12,
-      display: "block",
-    }}
-  />
+  src={item.image}
+  alt={item.title}
+  style={{
+    width: "100%",
+    height: "100%",
+    objectFit: "contain",
+    padding: 12,
+    display: "block",
+  }}
+/>
 </div>
                 <div
   style={{
@@ -429,14 +414,14 @@ backdropFilter: "blur(4px)",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 10,
+    gap: 10,
   }}
 >
   <h3 style={{ margin: 0 }}>
     {item.title}
   </h3>
 
-  {(item.title === "Single Cards" ||
-    item.title === "Accessories") && (
+  {["Single Cards", "Accessories"].includes(item.title) && (
     <span
       style={{
         background: "rgba(214,169,77,.15)",
@@ -448,6 +433,7 @@ backdropFilter: "blur(4px)",
         fontWeight: 700,
         letterSpacing: 1,
         textTransform: "uppercase",
+        whiteSpace: "nowrap",
       }}
     >
       Coming Soon
