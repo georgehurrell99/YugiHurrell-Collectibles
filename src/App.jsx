@@ -663,15 +663,72 @@ backdropFilter: "blur(4px)",
       </p>
     </div>
 
-    <div>
-      <h3 style={{ color: "#d6a94d" }}>✓ Trusted Collector</h3>
-      <p style={{ color: "#a1a1aa" }}>
-        Buying, selling and collecting Yu-Gi-Oh! products.
-      </p>
-    </div>
+  <div>
+  <h3 style={{ color: "#d6a94d" }}>✓ Trusted Collector</h3>
+  <p style={{ color: "#a1a1aa" }}>
+    Buying, selling and collecting Yu-Gi-Oh! products.
+  </p>
+</div>
+</div>
+
+<div
+  style={{
+    textAlign: "center",
+    marginTop: 30,
+    paddingBottom: 40,
+  }}
+>
+  <a
+    href="/shipping.html"
+    style={{
+      color: "#d6a94d",
+      textDecoration: "none",
+      fontWeight: 700,
+      margin: "0 15px",
+    }}
+  >
+    Shipping & Returns
+  </a>
+
+  <a
+    href="/sell.html"
+    style={{
+      color: "#d6a94d",
+      textDecoration: "none",
+      fontWeight: 700,
+      margin: "0 15px",
+    }}
+  >
+    Sell Your Collection
+  </a>
+
+  <a
+    href="https://wa.me/447885235614"
+    target="_blank"
+    style={{
+      color: "#d6a94d",
+      textDecoration: "none",
+      fontWeight: 700,
+      margin: "0 15px",
+    }}
+  >
+    Contact Us
+  </a>
+
+  <div
+    style={{
+      marginTop: 20,
+      color: "#777",
+      fontSize: 14,
+    }}
+  >
+    © 2026 YugiHurrell Collectibles
   </div>
+</div>
+
 </section>
-      </main>
-    </div>
-  );
+
+</main>
+</div>
+);
 }
