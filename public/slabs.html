@@ -9,154 +9,25 @@
     .container{max-width:1200px;margin:auto;padding:40px 20px}
     h1{font-size:48px;margin-bottom:10px}
     .sub{color:#d6a94d;margin-bottom:40px}
-
-    .grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:32px;
-    }
-
-    .card{
-      background:rgba(16,7,7,.88);
-      border:1px solid rgba(214,169,77,.25);
-      border-radius:24px;
-      padding:24px;
-      text-align:center;
-      transition:.25s;
-      backdrop-filter:blur(4px);
-      box-shadow:0 0 20px rgba(0,0,0,.35);
-    }
-
-    .card:hover{
-      transform:translateY(-4px);
-      border-color:#d6a94d;
-      box-shadow:0 0 25px rgba(214,169,77,.2);
-    }
-
-    .card h2{
-      margin-top:0;
-      color:#f5efe2;
-      font-size:28px;
-    }
-
-    .card p{
-      color:#a1a1aa;
-      line-height:1.6;
-    }
-
-    .grades{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:16px;
-      justify-content:center;
-    }
-
-    .grade{
-      border:1px solid rgba(214,169,77,.45);
-      border-radius:999px;
-      padding:8px 12px;
-      color:#d6a94d;
-      font-weight:bold;
-      font-size:14px;
-    }
-
-    .back{
-      display:inline-block;
-      margin-bottom:40px;
-      color:#d6a94d;
-      text-decoration:none;
-      font-weight:bold;
-    }
-
-    .slab-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-      gap:22px;
-      margin-top:28px;
-    }
-
-    .slab-item{
-      background:#050303;
-      border:1px solid rgba(214,169,77,.25);
-      border-radius:20px;
-      padding:16px;
-      text-align:center;
-      transition:.25s;
-    }
-
-    .slab-item:hover{
-      transform:translateY(-4px);
-      border-color:#d6a94d;
-      box-shadow:0 0 25px rgba(214,169,77,.2);
-    }
-
-    .slab-item img{
-      width:100%;
-      height:360px;
-      object-fit:contain;
-      border-radius:14px;
-      cursor:pointer;
-    }
-
-    .slab-name{
-      color:white;
-      font-weight:bold;
-      margin-top:14px;
-    }
-
-    .slab-price{
-      color:#d6a94d;
-      font-size:20px;
-      font-weight:bold;
-      margin-top:6px;
-    }
-
-    .buy-btn{
-      display:block;
-      margin-top:12px;
-      padding:11px;
-      border-radius:999px;
-      background:linear-gradient(90deg,#7f1d1d,#d6a94d);
-      color:black;
-      font-weight:bold;
-      text-decoration:none;
-    }
-
-    .lightbox{
-      display:none;
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.95);
-      z-index:9999;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-      overflow:auto;
-    }
-
-    .lightbox img{
-      max-width:95vw;
-      max-height:90vh;
-      object-fit:contain;
-      cursor:zoom-in;
-      transition:.25s;
-    }
-
-    .lightbox img.zoomed{
-      transform:scale(1.8);
-      cursor:zoom-out;
-    }
-
-    .close{
-      position:fixed;
-      top:20px;
-      right:28px;
-      color:#d6a94d;
-      font-size:44px;
-      cursor:pointer;
-      z-index:10000;
-    }
+    .grid{display:grid;grid-template-columns:1fr;gap:32px}
+    .card{background:rgba(16,7,7,.88);border:1px solid rgba(214,169,77,.25);border-radius:24px;padding:24px;text-align:center;transition:.25s;backdrop-filter:blur(4px);box-shadow:0 0 20px rgba(0,0,0,.35)}
+    .card:hover{transform:translateY(-4px);border-color:#d6a94d;box-shadow:0 0 25px rgba(214,169,77,.2)}
+    .card h2{margin-top:0;color:#f5efe2;font-size:28px}
+    .card p{color:#a1a1aa;line-height:1.6}
+    .grades{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center}
+    .grade{border:1px solid rgba(214,169,77,.45);border-radius:999px;padding:8px 12px;color:#d6a94d;font-weight:bold;font-size:14px}
+    .back{display:inline-block;margin-bottom:40px;color:#d6a94d;text-decoration:none;font-weight:bold}
+    .slab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-top:28px}
+    .slab-item{background:#050303;border:1px solid rgba(214,169,77,.25);border-radius:20px;padding:16px;text-align:center;transition:.25s}
+    .slab-item:hover{transform:translateY(-4px);border-color:#d6a94d;box-shadow:0 0 25px rgba(214,169,77,.2)}
+    .slab-item img{width:100%;height:360px;object-fit:contain;border-radius:14px;cursor:pointer}
+    .slab-name{color:white;font-weight:bold;margin-top:14px}
+    .slab-price{color:#d6a94d;font-size:20px;font-weight:bold;margin-top:6px}
+    .buy-btn{display:block;margin-top:12px;padding:11px;border-radius:999px;background:linear-gradient(90deg,#7f1d1d,#d6a94d);color:black;font-weight:bold;text-decoration:none}
+    .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9999;align-items:center;justify-content:center;padding:24px;overflow:auto}
+    .lightbox img{max-width:95vw;max-height:90vh;object-fit:contain;cursor:zoom-in;transition:.25s}
+    .lightbox img.zoomed{transform:scale(1.8);cursor:zoom-out}
+    .close{position:fixed;top:20px;right:28px;color:#d6a94d;font-size:44px;cursor:pointer;z-index:10000}
   </style>
 </head>
 
@@ -174,16 +45,16 @@
       <p>Professional Sports Authenticator graded cards.</p>
 
       <div class="slab-grid">
-        <div class="slab-item"><img src="/mp24dmg.png" onclick="openLightbox('/mp24dmg.png')"><div class="slab-name">Dark Magician Girl PSA 9</div><div class="slab-price">£49.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/qcrdmg.png" onclick="openLightbox('/qcrdmg.png')"><div class="slab-name">Dark Magician Girl PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/qcrlobdm.png" onclick="openLightbox('/qcrlobdm.png')"><div class="slab-name">Dark Magician PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/qcrplant.png" onclick="openLightbox('/qcrplant.png')"><div class="slab-name">Predaplant PSA 10</div><div class="slab-price">£89.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/rp01gateguardian.png" onclick="openLightbox('/rp01gateguardian.png')"><div class="slab-name">Gate Guardian PSA 9</div><div class="slab-price">£89.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/25thsummonedskull.png" onclick="openLightbox('/25thsummonedskull.png')"><div class="slab-name">Summoned Skull PSA 9</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/bewdreprint.png" onclick="openLightbox('/bewdreprint.png')"><div class="slab-name">Blue-Eyes White Dragon PSA 8</div><div class="slab-price">£99.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/blueeyesreprint.png" onclick="openLightbox('/blueeyesreprint.png')"><div class="slab-name">Blue-Eyes White Dragon PSA 9</div><div class="slab-price">£99.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/godcards.png" onclick="openLightbox('/godcards.png')"><div class="slab-name">Egyptian God Card Set PSA 9</div><div class="slab-price">£149.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/goldredeyes.png" onclick="openLightbox('/goldredeyes.png')"><div class="slab-name">Red-Eyes Black Dragon PSA 9</div><div class="slab-price">£59.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/mp24dmg.png" onclick="openLightbox('/mp24dmg.png')"><div class="slab-name">Dark Magician Girl PSA 9</div><div class="slab-price">£49.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Dark%20Magician%20Girl%20PSA%209%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/qcrdmg.png" onclick="openLightbox('/qcrdmg.png')"><div class="slab-name">Dark Magician Girl PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Dark%20Magician%20Girl%20PSA%208%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/qcrlobdm.png" onclick="openLightbox('/qcrlobdm.png')"><div class="slab-name">Dark Magician PSA 8</div><div class="slab-price">£59.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Dark%20Magician%20PSA%208%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/qcrplant.png" onclick="openLightbox('/qcrplant.png')"><div class="slab-name">Predaplant PSA 10</div><div class="slab-price">£89.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Predaplant%20PSA%2010%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/rp01gateguardian.png" onclick="openLightbox('/rp01gateguardian.png')"><div class="slab-name">Gate Guardian PSA 9</div><div class="slab-price">£89.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Gate%20Guardian%20PSA%209%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/25thsummonedskull.png" onclick="openLightbox('/25thsummonedskull.png')"><div class="slab-name">Summoned Skull PSA 9</div><div class="slab-price">£59.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Summoned%20Skull%20PSA%209%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/bewdreprint.png" onclick="openLightbox('/bewdreprint.png')"><div class="slab-name">Blue-Eyes White Dragon PSA 8</div><div class="slab-price">£99.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Blue-Eyes%20White%20Dragon%20PSA%208%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/blueeyesreprint.png" onclick="openLightbox('/blueeyesreprint.png')"><div class="slab-name">Blue-Eyes White Dragon PSA 9</div><div class="slab-price">£99.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Blue-Eyes%20White%20Dragon%20PSA%209%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/godcards.png" onclick="openLightbox('/godcards.png')"><div class="slab-name">Egyptian God Card Set PSA 9</div><div class="slab-price">£149.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Egyptian%20God%20Card%20Set%20PSA%209%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/goldredeyes.png" onclick="openLightbox('/goldredeyes.png')"><div class="slab-name">Red-Eyes Black Dragon PSA 9</div><div class="slab-price">£59.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Red-Eyes%20Black%20Dragon%20PSA%209%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
       </div>
     </div>
 
@@ -205,12 +76,12 @@
       <p>CGC graded trading cards and collector slabs.</p>
 
       <div class="slab-grid">
-        <div class="slab-item"><img src="/japsummonedskull.png" onclick="openLightbox('/japsummonedskull.png')"><div class="slab-name">Japanese Summoned Skull CGC 10</div><div class="slab-price">£49.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/zombieclown.png" onclick="openLightbox('/zombieclown.png')"><div class="slab-name">Clown Zombie CGC 9.5</div><div class="slab-price">£39.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/arcanadm.png" onclick="openLightbox('/arcanadm.png')"><div class="slab-name">Dark Magician CGC 9</div><div class="slab-price">£44.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/japdm.png" onclick="openLightbox('/japdm.png')"><div class="slab-name">Japanese Dark Magician CGC 8</div><div class="slab-price">£34.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/japdmg.png" onclick="openLightbox('/japdmg.png')"><div class="slab-name">Japanese Dark Magician Girl CGC 10</div><div class="slab-price">£39.99</div><a class="buy-btn">Buy Now</a></div>
-        <div class="slab-item"><img src="/japredeyes.png" onclick="openLightbox('/japredeyes.png')"><div class="slab-name">Japanese Red-Eyes CGC 10</div><div class="slab-price">£49.99</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/japsummonedskull.png" onclick="openLightbox('/japsummonedskull.png')"><div class="slab-name">Japanese Summoned Skull CGC 10</div><div class="slab-price">£49.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Japanese%20Summoned%20Skull%20CGC%2010%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/zombieclown.png" onclick="openLightbox('/zombieclown.png')"><div class="slab-name">Clown Zombie CGC 9.5</div><div class="slab-price">£39.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Clown%20Zombie%20CGC%209.5%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/arcanadm.png" onclick="openLightbox('/arcanadm.png')"><div class="slab-name">Dark Magician CGC 9</div><div class="slab-price">£44.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Dark%20Magician%20CGC%209%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/japdm.png" onclick="openLightbox('/japdm.png')"><div class="slab-name">Japanese Dark Magician CGC 8</div><div class="slab-price">£34.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Japanese%20Dark%20Magician%20CGC%208%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/japdmg.png" onclick="openLightbox('/japdmg.png')"><div class="slab-name">Japanese Dark Magician Girl CGC 10</div><div class="slab-price">£39.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Japanese%20Dark%20Magician%20Girl%20CGC%2010%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
+        <div class="slab-item"><img src="/japredeyes.png" onclick="openLightbox('/japredeyes.png')"><div class="slab-name">Japanese Red-Eyes CGC 10</div><div class="slab-price">£49.99</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Japanese%20Red-Eyes%20CGC%2010%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
       </div>
     </div>
 
@@ -219,7 +90,7 @@
       <p>Majesty Grading Company graded Yu-Gi-Oh! slabs.</p>
 
       <div class="slab-grid">
-        <div class="slab-item"><img src="/mgcexodia.png" onclick="openLightbox('/mgcexodia.png')"><div class="slab-name">Exodia Set MGC 8/9</div><div class="slab-price">£150.00</div><a class="buy-btn">Buy Now</a></div>
+        <div class="slab-item"><img src="/mgcexodia.png" onclick="openLightbox('/mgcexodia.png')"><div class="slab-name">Exodia Set MGC 8/9</div><div class="slab-price">£150.00</div><a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20buying%20Exodia%20Set%20MGC%208%2F9%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a></div>
       </div>
     </div>
 
@@ -245,129 +116,38 @@
       </div>
     </div>
 
-   <div class="card">
-  <h2>ARS</h2>
+    <div class="card">
+      <h2>ARS</h2>
+      <p>Premium Japanese ARS graded collector pieces.</p>
 
-  <p>
-    Premium Japanese ARS graded collector pieces.
-  </p>
+      <div class="slab-grid">
+        <div class="slab-item">
+          <img id="bewdars" src="/frontddsbewd.png" onclick="openLightbox(document.getElementById('bewdars').src)">
+          <div class="slab-name">DDS Blue-Eyes White Dragon ARS 10</div>
+          <div style="color:#d6a94d;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-top:8px;">Showcase Collection</div>
 
-  <div class="slab-grid">
+          <div style="display:flex;gap:8px;justify-content:center;margin-top:12px;">
+            <button onclick="document.getElementById('bewdars').src='/frontddsbewd.png'" class="buy-btn" style="margin-top:0;">Front</button>
+            <button onclick="document.getElementById('bewdars').src='/rearddsbewd.png'" class="buy-btn" style="margin-top:0;">Rear</button>
+          </div>
 
-    <div class="slab-item">
-  <img
-    id="bewdars"
-    src="/frontddsbewd.png"
-    onclick="openLightbox(document.getElementById('bewdars').src)"
-  >
+          <a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20DDS%20Blue-Eyes%20White%20Dragon%20ARS%2010%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a>
+        </div>
 
-  <div class="slab-name">
-    DDS Blue-Eyes White Dragon ARS 10
-  </div>
+        <div class="slab-item">
+          <img id="dmars" src="/frontddsdm.png" onclick="openLightbox(document.getElementById('dmars').src)">
+          <div class="slab-name">DDS Dark Magician ARS 10</div>
+          <div style="color:#d6a94d;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-top:8px;">Showcase Collection</div>
 
-  <div
-    style="
-      color:#d6a94d;
-      font-size:14px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-top:8px;
-    "
-  >
-    Showcase Collection
-  </div>
+          <div style="display:flex;gap:8px;justify-content:center;margin-top:12px;">
+            <button onclick="document.getElementById('dmars').src='/frontddsdm.png'" class="buy-btn" style="margin-top:0;">Front</button>
+            <button onclick="document.getElementById('dmars').src='/rearddsdm.png'" class="buy-btn" style="margin-top:0;">Rear</button>
+          </div>
 
-  <div
-    style="
-      display:flex;
-      gap:8px;
-      justify-content:center;
-      margin-top:12px;
-    "
-  >
-    <button
-      onclick="document.getElementById('bewdars').src='/frontddsbewd.png'"
-      class="buy-btn"
-      style="margin-top:0;"
-    >
-      Front
-    </button>
-
-    <button
-      onclick="document.getElementById('bewdars').src='/rearddsbewd.png'"
-      class="buy-btn"
-      style="margin-top:0;"
-    >
-      Rear
-    </button>
-  </div>
-
-  <a
-    class="buy-btn"
-    href="https://wa.me/447885235614"
-  >
-    Enquire To Purchase
-  </a>
-</div>
-
-    <div class="slab-item">
-  <img
-    id="dmars"
-    src="/frontddsdm.png"
-    onclick="openLightbox(document.getElementById('dmars').src)"
-  >
-
-  <div class="slab-name">
-    DDS Dark Magician ARS 10
-  </div>
-
-  <div
-    style="
-      color:#d6a94d;
-      font-size:14px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-top:8px;
-    "
-  >
-    Showcase Collection
-  </div>
-
-  <div
-    style="
-      display:flex;
-      gap:8px;
-      justify-content:center;
-      margin-top:12px;
-    "
-  >
-    <button
-      onclick="document.getElementById('dmars').src='/frontddsdm.png'"
-      class="buy-btn"
-      style="margin-top:0;"
-    >
-      Front
-    </button>
-
-    <button
-      onclick="document.getElementById('dmars').src='/rearddsdm.png'"
-      class="buy-btn"
-      style="margin-top:0;"
-    >
-      Rear
-    </button>
-  </div>
-
-  <a
-    class="buy-btn"
-    href="https://wa.me/447885235614"
-  >
-    Enquire To Purchase
-  </a>
-</div>
-
-  </div>
-</div>
+          <a class="buy-btn" target="_blank" href="https://wa.me/447885235614?text=Hi%2C%20I%20am%20interested%20in%20DDS%20Dark%20Magician%20ARS%2010%20from%20YugiHurrell%20Collectibles.">Enquire To Purchase</a>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
