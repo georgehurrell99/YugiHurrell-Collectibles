@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shipping & Returns | YugiHurrell Collectibles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    body{margin:0;font-family:Arial,sans-serif;background:#050303;color:white}
+    .container{max-width:1000px;margin:auto;padding:40px 20px}
+    .back{display:inline-block;margin-bottom:40px;color:#d6a94d;text-decoration:none;font-weight:bold}
+    h1{font-size:48px;margin-bottom:10px;color:#f5efe2}
+    h2{color:#d6a94d;margin-top:40px}
+    p,li{color:#d4d4d8;line-height:1.8}
+    .card{background:rgba(16,7,7,.88);border:1px solid rgba(214,169,77,.25);border-radius:24px;padding:28px;margin-top:24px}
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+<a class="back" href="/">← Back to Homepage</a>
+
+<h1>Shipping & Returns</h1>
+
+<p>
+Information about shipping, packaging, payments and returns for YugiHurrell Collectibles.
+</p>
+
+<div class="card">
+  <h2>Shipping</h2>
+  <p>
+    Orders are usually dispatched within 1–2 working days after payment has been confirmed.
+  </p>
+  <p>
+    UK orders are sent using tracked delivery where suitable, depending on the item value and order size.
+  </p>
+</div>
+
+<div class="card">
+  <h2>Packaging</h2>
+  <p>
+    All cards, slabs and sealed products are packed securely to help protect against damage in transit.
+  </p>
+  <ul>
+    <li>Graded slabs are protected with additional padding.</li>
+    <li>Single cards are packed in protective sleeves/top loaders where required.</li>
+    <li>Sealed products are boxed securely before dispatch.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Payments</h2>
+  <p>
+    Purchases can currently be arranged through direct enquiry. Customers can contact us through WhatsApp or email before purchasing.
+  </p>
+  <p>
+    Secure checkout options may be added in future as the store grows.
+  </p>
+</div>
+
+<div class="card">
+  <h2>Returns</h2>
+  <p>
+    Returns are reviewed on a case-by-case basis. Items must be returned in the same condition they were sent.
+  </p>
+  <p>
+    Due to the collectible nature of trading cards, graded slabs and sealed products, returns may not be accepted where an item has been opened, altered, damaged or tampered with after delivery.
+  </p>
+</div>
+
+<div class="card">
+  <h2>Contact</h2>
+  <p>
+    For shipping, payment or return questions, contact:
+  </p>
+  <p>
+    Email: yugihurrell@gmail.com
+  </p>
+  <p>
+    WhatsApp: +44 7885 235614
+  </p>
+</div>
+
+</div>
+</body>
+</html>
