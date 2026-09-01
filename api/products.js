@@ -4,9 +4,8 @@ export default async function handler(req, res) {
   const clientSecret = process.env.SHOPIFY_CLIENT_SECRET;
 
   try {
-    // Get a temporary Shopify Admin API access token
     const tokenResponse = await fetch(
-      `https://${shop}/admin/oauth/access_token`,
+      `https://${shop}.myshopify.com/admin/oauth/access_token`,
       {
         method: "POST",
         headers: {
@@ -20,7 +19,17 @@ export default async function handler(req, res) {
       }
     );
 
-    const tokenData = await tokenResponse.json();
+    const tokenText = await tokenResponse.text();
+
+    let tokenData;
+    try {
+      tokenData = JSON.parse(tokenText);
+    } catch {
+      return res.status(500).json({
+        error: "Shopify returned a non-JSON authentication response",
+        details: tokenText,
+      });
+    }
 
     if (!tokenResponse.ok) {
       return res.status(tokenResponse.status).json({
@@ -29,12 +38,10 @@ export default async function handler(req, res) {
       });
     }
 
-    // Get products from Shopify
     const response = await fetch(
-      `https://${shop}/admin/api/2026-07/products.json`,
+      `https://${shop}.myshopify.com/admin/api/2026-07/products.json`,
       {
         headers: {
-          "Content-Type": "application/json",
           "X-Shopify-Access-Token": tokenData.access_token,
         },
       }
@@ -55,6 +62,7 @@ export default async function handler(req, res) {
     return res.status(500).json({
       error: "Server error",
       details: error.message,
+      shop: shop,
     });
   }
 }
