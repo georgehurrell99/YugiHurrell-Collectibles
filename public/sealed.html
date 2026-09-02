@@ -35,30 +35,32 @@
     }
 
     .card {
-      background: rgba(16,7,7,.88);
-      border: 1px solid rgba(214,169,77,.25);
+      background: rgba(16, 7, 7, .88);
+      border: 1px solid rgba(214, 169, 77, .25);
       border-radius: 24px;
       padding: 24px;
       text-align: center;
       transition: .25s;
       backdrop-filter: blur(4px);
-      box-shadow: 0 0 20px rgba(0,0,0,.35);
+      box-shadow: 0 0 20px rgba(0, 0, 0, .35);
     }
 
     .card:hover {
       transform: translateY(-4px);
       border-color: #d6a94d;
-      box-shadow: 0 0 25px rgba(214,169,77,.2);
+      box-shadow: 0 0 25px rgba(214, 169, 77, .2);
     }
 
     .product-image {
       width: 100%;
       height: 260px;
       object-fit: contain;
+      display: block;
     }
 
     .card h2 {
       margin-top: 16px;
+      margin-bottom: 10px;
       color: #f5efe2;
       font-size: 24px;
     }
@@ -67,6 +69,7 @@
       color: #d6a94d;
       line-height: 1.6;
       font-weight: 600;
+      margin: 6px 0;
     }
 
     .buy-btn {
@@ -74,7 +77,7 @@
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
-      background: linear-gradient(90deg,#b9822b,#e0b85c);
+      background: linear-gradient(90deg, #b9822b, #e0b85c);
       color: #050303;
       font-weight: 700;
       padding: 12px 16px;
@@ -99,6 +102,10 @@
       cursor: not-allowed;
     }
 
+    .sold-out:hover {
+      transform: none;
+    }
+
     .sold-out-text {
       color: #ef4444 !important;
       font-weight: 700;
@@ -120,133 +127,155 @@
     #error {
       color: #ef4444;
       font-size: 18px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .container {
+        padding: 30px 15px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <a class="back" href="/">← Back to Homepage</a>
+    <a class="back" href="/">← Back to Homepage</a>
 
-  <h1>Sealed Product</h1>
+    <h1>Sealed Product</h1>
 
-  <p class="sub">
-    Browse sealed Yu-Gi-Oh! product available from YugiHurrell Collectibles.
-  </p>
+    <p class="sub">
+      Browse sealed Yu-Gi-Oh! product available from YugiHurrell Collectibles.
+    </p>
 
-  <div id="loading">Loading products...</div>
+    <div id="loading">Loading products...</div>
 
-  <div id="error"></div>
+    <div id="error"></div>
 
-  <div class="grid" id="product-grid"></div>
+    <div class="grid" id="product-grid"></div>
 
-</div>
+  </div>
 
-<script>
+  <script>
 
-async function loadProducts() {
+    async function loadProducts() {
 
-  const grid = document.getElementById("product-grid");
-  const loading = document.getElementById("loading");
-  const error = document.getElementById("error");
+      const grid = document.getElementById("product-grid");
+      const loading = document.getElementById("loading");
+      const error = document.getElementById("error");
 
-  try {
+      try {
 
-    const response = await fetch("/api/products");
+        const response = await fetch("/api/products");
 
-    if (!response.ok) {
-      throw new Error("Unable to load products");
-    }
+        if (!response.ok) {
+          throw new Error("Unable to load products");
+        }
 
-    const data = await response.json();
+        const data = await response.json();
 
-    loading.style.display = "none";
+        loading.style.display = "none";
 
-    const products = data.products;
+        const products = data.products;
 
-    products.forEach(product => {
+        products.forEach(product => {
 
-      const variant = product.variants[0];
+          const variant = product.variants[0];
 
-      const price = Number(variant.price).toFixed(2);
+          const price = Number(variant.price).toFixed(2);
 
-      const stock = variant.inventory_quantity;
+          const stock = variant.inventory_quantity;
 
-      const image =
-        product.image?.src ||
-        "https://via.placeholder.com/300x300?text=No+Image";
+          let image =
+            product.image?.src ||
+            "https://via.placeholder.com/300x300?text=No+Image";
 
-      const card = document.createElement("div");
+          /*
+            Custom image for Magnificent Monsters Tuckbox.
+            This uses MAMOSEALED.png from the public folder.
+          */
+          if (product.handle === "magnificent-monsters-tuckbox") {
+            image = "/MAMOSEALED.png";
+          }
 
-      card.className = "card";
+          const card = document.createElement("div");
 
-      if (stock > 0) {
+          card.className = "card";
 
-        card.innerHTML = `
-          <img
-            class="product-image"
-            src="${image}"
-            alt="${product.title}"
-          >
+          if (stock > 0) {
 
-          <h2>${product.title}</h2>
+            card.innerHTML = `
+              <img
+                class="product-image"
+                src="${image}"
+                alt="${product.title}"
+              >
 
-          <p>£${price}</p>
+              <h2>${product.title}</h2>
 
-          <p>${stock} In Stock</p>
+              <p>£${price}</p>
 
-          <a
-            class="buy-btn"
-            href="https://cttn1c-aj.myshopify.com/cart/${variant.id}:1"
-          >
-            Buy Now
-          </a>
-        `;
+              <p>${stock} In Stock</p>
 
-      } else {
+              <a
+                class="buy-btn"
+                href="https://cttn1c-aj.myshopify.com/cart/${variant.id}:1"
+              >
+                Buy Now
+              </a>
+            `;
 
-        card.innerHTML = `
-          <img
-            class="product-image"
-            src="${image}"
-            alt="${product.title}"
-          >
+          } else {
 
-          <h2>${product.title}</h2>
+            card.innerHTML = `
+              <img
+                class="product-image"
+                src="${image}"
+                alt="${product.title}"
+              >
 
-          <p>£${price}</p>
+              <h2>${product.title}</h2>
 
-          <p class="sold-out-text">Sold Out</p>
+              <p>£${price}</p>
 
-          <button class="buy-btn sold-out">
-            Sold Out
-          </button>
-        `;
+              <p class="sold-out-text">Sold Out</p>
+
+              <button
+                class="buy-btn sold-out"
+                disabled
+              >
+                Sold Out
+              </button>
+            `;
+
+          }
+
+          grid.appendChild(card);
+
+        });
+
+      } catch (err) {
+
+        loading.style.display = "none";
+
+        error.textContent =
+          "Unable to load products. Please try again later.";
+
+        console.error(err);
 
       }
 
-      grid.appendChild(card);
+    }
 
-    });
+    loadProducts();
 
-  } catch (err) {
-
-    loading.style.display = "none";
-
-    error.textContent =
-      "Unable to load products. Please try again later.";
-
-    console.error(err);
-
-  }
-
-}
-
-loadProducts();
-
-</script>
+  </script>
 
 </body>
 </html>
