@@ -182,11 +182,42 @@
 
         loading.style.display = "none";
 
-        const products = data.products;
+        /*
+          FILTER OUT GRADED SLABS
+        */
+
+        const gradedWords = [
+          "graded",
+          "slab",
+          "psa",
+          "cgc",
+          "bgs",
+          "ars",
+          "ace",
+          "tag",
+          "mgc"
+        ];
+
+        const products = data.products.filter(product => {
+
+          const productInfo = (
+            (product.title || "") + " " +
+            (product.product_type || "") + " " +
+            (product.tags || "")
+          ).toLowerCase();
+
+          return !gradedWords.some(word =>
+            productInfo.includes(word)
+          );
+
+        });
+
 
         products.forEach(product => {
 
           const variant = product.variants[0];
+
+          if (!variant) return;
 
           const price = Number(variant.price).toFixed(2);
 
@@ -196,17 +227,20 @@
             product.image?.src ||
             "https://via.placeholder.com/300x300?text=No+Image";
 
+
           /*
-            Custom image for Magnificent Monsters Tuckbox.
-            This uses MAMOSEALED.png from the public folder.
+            Custom image for Magnificent Monsters Tuckbox
           */
+
           if (product.handle === "magnificent-monsters-tuckbox") {
             image = "/MAMOSEALED.png";
           }
 
+
           const card = document.createElement("div");
 
           card.className = "card";
+
 
           if (stock > 0) {
 
@@ -259,6 +293,17 @@
           grid.appendChild(card);
 
         });
+
+
+        if (products.length === 0) {
+
+          grid.innerHTML = `
+            <p style="color:#d6a94d;">
+              No sealed products are currently available.
+            </p>
+          `;
+
+        }
 
       } catch (err) {
 
