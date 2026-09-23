@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <title>Single Cards | YugiHurrell Collectibles</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: radial-gradient(circle at center, rgba(120,45,10,.45), #050303 70%);
+      background: #050303;
       color: white;
     }
 
@@ -26,6 +29,10 @@
       font-weight: bold;
     }
 
+    .back:hover {
+      text-decoration: underline;
+    }
+
     h1 {
       font-size: 48px;
       margin-bottom: 10px;
@@ -33,387 +40,507 @@
 
     .sub {
       color: #d6a94d;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       line-height: 1.6;
     }
 
-    .panel {
-      background: #100707;
-      border: 1px solid rgba(127,29,29,.55);
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(16, 7, 7, .88);
+      border: 1px solid rgba(214, 169, 77, .25);
       border-radius: 24px;
       padding: 24px;
-      margin-bottom: 30px;
+      text-align: center;
+      transition: .25s;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 20px rgba(0, 0, 0, .35);
     }
 
-    .filters {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #d6a94d;
+      box-shadow: 0 0 25px rgba(214, 169, 77, .2);
     }
 
-    input, select {
+    .product-image {
       width: 100%;
-      padding: 14px;
-      border-radius: 14px;
-      background: #050303;
-      color: white;
-      border: 1px solid rgba(214,169,77,.35);
+      height: 300px;
+      object-fit: contain;
+      display: block;
     }
 
-    .button {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 999px;
-      background: #d6a94d;
-      color: black;
-      font-weight: bold;
+    .card h2 {
+      margin-top: 16px;
+      margin-bottom: 10px;
+      color: #f5efe2;
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      color: #d6a94d;
+      line-height: 1.6;
+      font-weight: 600;
+      margin: 6px 0;
+    }
+
+    .buy-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+
+      background: linear-gradient(
+        90deg,
+        #b9822b,
+        #e0b85c
+      );
+
+      color: #050303;
+      font-weight: 700;
+
+      padding: 12px 16px;
+      border-radius: 10px;
+
+      margin-top: 14px;
+      width: 100%;
+      min-height: 46px;
+
+      transition: .2s;
       text-decoration: none;
+
       border: none;
       cursor: pointer;
+
+      font-size: 16px;
     }
 
-    .ghost {
-      background: transparent;
-      color: #d6a94d;
-      border: 1px solid rgba(214,169,77,.45);
+    .buy-btn:hover {
+      transform: translateY(-2px);
     }
 
-    .table-wrap {
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 14px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      vertical-align: top;
-    }
-
-    th {
-      color: #d6a94d;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    td {
-      color: #d4d4d8;
-    }
-
-    .card-name {
-      color: white;
-      font-weight: bold;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(214,169,77,.12);
-      border: 1px solid rgba(214,169,77,.35);
-      color: #d6a94d;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .stock {
-      color: #86efac;
-      font-weight: bold;
-    }
-
-    .request {
-      color: #d6a94d;
-      font-weight: bold;
-    }
-
-    .note {
+    .sold-out {
+      background: #3f3f46;
       color: #a1a1aa;
-      font-size: 14px;
+      cursor: not-allowed;
+    }
+
+    .sold-out:hover {
+      transform: none;
+    }
+
+    .sold-out-text {
+      color: #ef4444 !important;
+      font-weight: 700;
+    }
+
+    #loading {
+      color: #d6a94d;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    #error {
+      color: #ef4444;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+
+      padding: 40px 20px;
+
+      text-align: center;
+
+      background: rgba(16, 7, 7, .88);
+
+      border: 1px solid rgba(214, 169, 77, .25);
+
+      border-radius: 24px;
+
+      color: #a1a1aa;
+
       line-height: 1.7;
     }
 
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin: 30px 0;
+    .empty strong {
+      color: #d6a94d;
     }
 
-    .category {
-      background: #100707;
-      border: 1px solid rgba(127,29,29,.55);
-      border-radius: 20px;
-      padding: 22px;
+    @media (max-width: 600px) {
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .container {
+        padding: 30px 15px;
+      }
+
+      .product-image {
+        height: 260px;
+      }
+
     }
 
-    .category h3 {
-      margin-top: 0;
-    }
-
-    .category p {
-      color: #a1a1aa;
-      line-height: 1.6;
-    }
   </style>
+
 </head>
 
-<body>
-  <div class="container">
-    <a class="back" href="/">← Back to Homepage</a>
 
-    <h1>Single Cards</h1>
+<body>
+
+  <div class="container">
+
+    <a class="back" href="/">
+      ← Back to Homepage
+    </a>
+
+
+    <h1>
+      Single Cards
+    </h1>
+
 
     <p class="sub">
-      Search Yu-Gi-Oh! single cards by name, set, rarity and condition. 
-      Available stock will show as in stock, while reference cards can be requested.
+      Browse individual Yu-Gi-Oh! cards available from
+      YugiHurrell Collectibles.
     </p>
 
-    <div class="category-grid">
-      <div class="category">
-        <h3>Monster Cards</h3>
-        <p>Effect, Normal, Fusion, Synchro, Xyz, Link and Ritual monsters.</p>
-      </div>
 
-      <div class="category">
-        <h3>Spell Cards</h3>
-        <p>Normal, Quick-Play, Field, Equip, Continuous and Ritual spells.</p>
-      </div>
-
-      <div class="category">
-        <h3>Trap Cards</h3>
-        <p>Normal, Counter and Continuous trap cards.</p>
-      </div>
-
-      <div class="category">
-        <h3>Collector Rarities</h3>
-        <p>Collector Rare, Ultimate Rare, Ghost Rare and premium chase cards.</p>
-      </div>
-
-      <div class="category">
-        <h3>Quarter Century Rares</h3>
-        <p>Quarter Century Secret Rares and anniversary collector cards.</p>
-      </div>
-
-      <div class="category">
-        <h3>Request A Card</h3>
-        <p>Looking for something specific? Request a card for sourcing.</p>
-      </div>
+    <div id="loading">
+      Loading singles...
     </div>
 
-    <div class="panel">
-      <h2>Singles Finder</h2>
 
-      <p class="note">
-        This is the front-end structure for your future singles database. 
-        Later, this can connect to YGOPRODeck reference data and your own uploaded stock list.
-      </p>
+    <div id="error"></div>
 
-      <div class="filters">
-        <input id="searchInput" type="text" placeholder="Search card name, set, code or rarity">
 
-        <select id="setFilter">
-          <option value="">All Sets</option>
-          <option>Legend of Blue Eyes White Dragon</option>
-          <option>Metal Raiders</option>
-          <option>Starter Deck: Yugi</option>
-          <option>Rarity Collection</option>
-          <option>Rarity Collection 5</option>
-        </select>
+    <div
+      class="grid"
+      id="product-grid"
+    ></div>
 
-        <select id="rarityFilter">
-          <option value="">All Rarities</option>
-          <option>Common</option>
-          <option>Rare</option>
-          <option>Super Rare</option>
-          <option>Ultra Rare</option>
-          <option>Secret Rare</option>
-          <option>Ultimate Rare</option>
-          <option>Ghost Rare</option>
-          <option>Collector's Rare</option>
-          <option>Quarter Century Secret Rare</option>
-        </select>
-
-        <select id="conditionFilter">
-          <option value="">All Conditions</option>
-          <option>Mint</option>
-          <option>Near Mint</option>
-          <option>Very Light Play</option>
-          <option>Light Play</option>
-          <option>Played</option>
-          <option>Damaged</option>
-        </select>
-
-        <select id="typeFilter">
-          <option value="">All Types</option>
-          <option>Monster</option>
-          <option>Spell</option>
-          <option>Trap</option>
-        </select>
-
-        <select id="stockFilter">
-          <option value="">All Stock Status</option>
-          <option>In Stock</option>
-          <option>Request Card</option>
-        </select>
-      </div>
-
-      <div style="margin-top: 18px;">
-        <button class="button" onclick="filterCards()">Search Singles</button>
-        <button class="button ghost" onclick="resetFilters()">Reset</button>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h2>Available / Requestable Cards</h2>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Card</th>
-              <th>Set</th>
-              <th>Rarity</th>
-              <th>Type</th>
-              <th>Condition</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-
-          <tbody id="cardTable"></tbody>
-        </table>
-      </div>
-    </div>
   </div>
 
+
   <script>
-    const cards = [
-      {
-        name: "Blue-Eyes White Dragon",
-        set: "Legend of Blue Eyes White Dragon",
-        code: "LOB-001",
-        rarity: "Ultra Rare",
-        type: "Monster",
-        condition: "Near Mint",
-        status: "In Stock",
-        price: "£120"
-      },
-      {
-        name: "Dark Magician",
-        set: "Starter Deck: Yugi",
-        code: "SDY-006",
-        rarity: "Ultra Rare",
-        type: "Monster",
-        condition: "Light Play",
-        status: "In Stock",
-        price: "£45"
-      },
-      {
-        name: "Red-Eyes Black Dragon",
-        set: "Metal Raiders",
-        code: "MRD-018",
-        rarity: "Ultra Rare",
-        type: "Monster",
-        condition: "Very Light Play",
-        status: "In Stock",
-        price: "£80"
-      },
-      {
-        name: "Ash Blossom & Joyous Spring",
-        set: "Rarity Collection",
-        code: "RA01-EN011",
-        rarity: "Quarter Century Secret Rare",
-        type: "Monster",
-        condition: "Near Mint",
-        status: "Request Card",
-        price: ""
-      },
-      {
-        name: "Infinite Impermanence",
-        set: "Rarity Collection",
-        code: "RA01-EN078",
-        rarity: "Secret Rare",
-        type: "Trap",
-        condition: "Near Mint",
-        status: "Request Card",
-        price: ""
-      },
-      {
-        name: "Super Polymerization",
-        set: "Rarity Collection 5",
-        code: "RA05-EN045",
-        rarity: "Collector's Rare",
-        type: "Spell",
-        condition: "Mint",
-        status: "Request Card",
-        price: ""
+
+    /*
+      ============================================================
+      SHOPIFY SINGLES
+      ============================================================
+
+      Only Shopify products with the exact tag:
+
+      singles
+
+      will appear on this page.
+
+      Example Shopify product:
+
+      Product:
+      Blue-Eyes White Dragon
+
+      Price:
+      £120
+
+      Inventory:
+      1
+
+      Tag:
+      singles
+    */
+
+
+    function hasTag(product, wantedTag) {
+
+      /*
+        Shopify normally returns tags as a comma-separated string.
+
+        This also supports an array just in case your API returns
+        tags in that format.
+      */
+
+      const tags = Array.isArray(product.tags)
+
+        ? product.tags
+
+        : String(product.tags || "")
+            .split(",")
+            .map(tag => tag.trim());
+
+
+      return tags.some(
+        tag =>
+          tag.toLowerCase() === wantedTag.toLowerCase()
+      );
+
+    }
+
+
+    async function loadProducts() {
+
+      const grid =
+        document.getElementById("product-grid");
+
+      const loading =
+        document.getElementById("loading");
+
+      const error =
+        document.getElementById("error");
+
+
+      try {
+
+        /*
+          Get products from your existing Shopify API.
+        */
+
+        const response =
+          await fetch("/api/products");
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "Unable to load Shopify products"
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        loading.style.display = "none";
+
+
+        /*
+          ONLY SHOW PRODUCTS TAGGED "singles"
+        */
+
+        const products =
+          (data.products || []).filter(
+            product =>
+              hasTag(product, "singles")
+          );
+
+
+        /*
+          No singles found
+        */
+
+        if (products.length === 0) {
+
+          grid.innerHTML = `
+            
+            <div class="empty">
+
+              <strong>No single cards available yet.</strong>
+
+              <br><br>
+
+              Add your cards through Shopify and give
+              each product the tag:
+
+              <br><br>
+
+              <strong>singles</strong>
+
+            </div>
+
+          `;
+
+          return;
+
+        }
+
+
+        /*
+          Display each Shopify single
+        */
+
+        products.forEach(product => {
+
+          /*
+            Use the first Shopify variant
+          */
+
+          const variant =
+            product.variants?.[0];
+
+
+          if (!variant) {
+            return;
+          }
+
+
+          /*
+            Price from Shopify
+          */
+
+          const price =
+            Number(variant.price || 0)
+              .toFixed(2);
+
+
+          /*
+            Shopify inventory quantity
+          */
+
+          const stock =
+            Number(
+              variant.inventory_quantity || 0
+            );
+
+
+          /*
+            Shopify product image
+          */
+
+          const image =
+            product.image?.src ||
+            "https://via.placeholder.com/300x400?text=No+Image";
+
+
+          /*
+            Create product card
+          */
+
+          const card =
+            document.createElement("div");
+
+
+          card.className = "card";
+
+
+          /*
+            IN STOCK
+          */
+
+          if (stock > 0) {
+
+            card.innerHTML = `
+
+              <img
+                class="product-image"
+                src="${image}"
+                alt="${product.title}"
+                loading="lazy"
+              >
+
+
+              <h2>
+                ${product.title}
+              </h2>
+
+
+              <p>
+                £${price}
+              </p>
+
+
+              <p>
+                ${stock} In Stock
+              </p>
+
+
+              <a
+                class="buy-btn"
+                href="https://cttn1c-aj.myshopify.com/cart/${variant.id}:1"
+              >
+                Buy Now
+              </a>
+
+            `;
+
+          }
+
+
+          /*
+            SOLD OUT
+          */
+
+          else {
+
+            card.innerHTML = `
+
+              <img
+                class="product-image"
+                src="${image}"
+                alt="${product.title}"
+                loading="lazy"
+              >
+
+
+              <h2>
+                ${product.title}
+              </h2>
+
+
+              <p>
+                £${price}
+              </p>
+
+
+              <p class="sold-out-text">
+                Sold Out
+              </p>
+
+
+              <button
+                class="buy-btn sold-out"
+                disabled
+              >
+                Sold Out
+              </button>
+
+            `;
+
+          }
+
+
+          grid.appendChild(card);
+
+        });
+
+
       }
-    ];
 
-    function renderCards(list) {
-      const table = document.getElementById("cardTable");
 
-      table.innerHTML = list.map(card => `
-        <tr>
-          <td>
-            <div class="card-name">${card.name}</div>
-            <span class="badge">${card.code}</span>
-          </td>
-          <td>${card.set}</td>
-          <td>${card.rarity}</td>
-          <td>${card.type}</td>
-          <td>${card.condition}</td>
-          <td>
-            ${
-              card.status === "In Stock"
-                ? `<span class="stock">In Stock ${card.price ? "— " + card.price : ""}</span>`
-                : `<a class="request" href="mailto:yugihurrell@gmail.com?subject=Request Card: ${encodeURIComponent(card.name)}">Request This Card</a>`
-            }
-          </td>
-        </tr>
-      `).join("");
+      catch (err) {
+
+        console.error(err);
+
+
+        loading.style.display =
+          "none";
+
+
+        error.textContent =
+          "Unable to load products. Please try again later.";
+
+      }
+
     }
 
-    function filterCards() {
-      const search = document.getElementById("searchInput").value.toLowerCase();
-      const set = document.getElementById("setFilter").value;
-      const rarity = document.getElementById("rarityFilter").value;
-      const condition = document.getElementById("conditionFilter").value;
-      const type = document.getElementById("typeFilter").value;
-      const stock = document.getElementById("stockFilter").value;
 
-      const filtered = cards.filter(card => {
-        const searchable = `${card.name} ${card.set} ${card.code} ${card.rarity}`.toLowerCase();
+    /*
+      Load Shopify singles when page opens
+    */
 
-        return (
-          searchable.includes(search) &&
-          (!set || card.set === set) &&
-          (!rarity || card.rarity === rarity) &&
-          (!condition || card.condition === condition) &&
-          (!type || card.type === type) &&
-          (!stock || card.status === stock)
-        );
-      });
+    loadProducts();
 
-      renderCards(filtered);
-    }
-
-    function resetFilters() {
-      document.getElementById("searchInput").value = "";
-      document.getElementById("setFilter").value = "";
-      document.getElementById("rarityFilter").value = "";
-      document.getElementById("conditionFilter").value = "";
-      document.getElementById("typeFilter").value = "";
-      document.getElementById("stockFilter").value = "";
-      renderCards(cards);
-    }
-
-    renderCards(cards);
   </script>
+
 </body>
+
 </html>
