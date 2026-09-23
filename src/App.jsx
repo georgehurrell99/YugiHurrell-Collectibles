@@ -421,24 +421,24 @@ backdropFilter: "blur(4px)",
     {item.title}
   </h3>
 
-  {["Single Cards", "Accessories"].includes(item.title) && (
-    <span
-      style={{
-        background: "rgba(214,169,77,.15)",
-        border: "1px solid rgba(214,169,77,.45)",
-        color: "#d6a94d",
-        padding: "4px 10px",
-        borderRadius: 999,
-        fontSize: 11,
-        fontWeight: 700,
-        letterSpacing: 1,
-        textTransform: "uppercase",
-        whiteSpace: "nowrap",
-      }}
-    >
-      Coming Soon
-    </span>
-  )}
+ {item.title === "Accessories" && (
+  <span
+    style={{
+      background: "rgba(214,169,77,.15)",
+      border: "1px solid rgba(214,169,77,.45)",
+      color: "#d6a94d",
+      padding: "4px 10px",
+      borderRadius: 999,
+      fontSize: 11,
+      fontWeight: 700,
+      letterSpacing: 1,
+      textTransform: "uppercase",
+      whiteSpace: "nowrap",
+    }}
+  >
+    Coming Soon
+  </span>
+)}
 </div>
 
 <ul
