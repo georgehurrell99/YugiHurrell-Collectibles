@@ -67,11 +67,55 @@
       box-shadow: 0 0 25px rgba(214, 169, 77, .2);
     }
 
+    /* Image area */
+
+    .image-container {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .product-image {
       width: 100%;
       height: 300px;
       object-fit: contain;
       display: block;
+    }
+
+    /* Front / Back buttons */
+
+    .image-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .image-btn {
+      background: transparent;
+      color: #d6a94d;
+      border: 1px solid rgba(214, 169, 77, .4);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .image-btn:hover {
+      border-color: #d6a94d;
+      background: rgba(214, 169, 77, .12);
+    }
+
+    .image-btn.active {
+      background: #d6a94d;
+      color: #050303;
+      border-color: #d6a94d;
     }
 
     .card h2 {
@@ -187,6 +231,10 @@
         height: 260px;
       }
 
+      .image-container {
+        height: 260px;
+      }
+
     }
 
   </style>
@@ -242,31 +290,10 @@
       singles
 
       will appear on this page.
-
-      Example Shopify product:
-
-      Product:
-      Blue-Eyes White Dragon
-
-      Price:
-      £120
-
-      Inventory:
-      1
-
-      Tag:
-      singles
     */
 
 
     function hasTag(product, wantedTag) {
-
-      /*
-        Shopify normally returns tags as a comma-separated string.
-
-        This also supports an array just in case your API returns
-        tags in that format.
-      */
 
       const tags = Array.isArray(product.tags)
 
@@ -341,7 +368,7 @@
         if (products.length === 0) {
 
           grid.innerHTML = `
-            
+
             <div class="empty">
 
               <strong>No single cards available yet.</strong>
@@ -403,12 +430,67 @@
 
 
           /*
-            Shopify product image
+            Get all Shopify images.
+
+            First image = Front
+            Second image = Back
           */
 
-          const image =
-            product.image?.src ||
-            "https://via.placeholder.com/300x400?text=No+Image";
+          const images =
+            Array.isArray(product.images)
+              ? product.images
+                  .map(image =>
+                    typeof image === "string"
+                      ? image
+                      : image?.src
+                  )
+                  .filter(Boolean)
+              : [];
+
+
+          /*
+            Fallback to primary image if
+            product.images isn't available.
+          */
+
+          if (
+            images.length === 0 &&
+            product.image?.src
+          ) {
+
+            images.push(
+              product.image.src
+            );
+
+          }
+
+
+          /*
+            Final image fallback
+          */
+
+          if (images.length === 0) {
+
+            images.push(
+              "https://via.placeholder.com/300x400?text=No+Image"
+            );
+
+          }
+
+
+          /*
+            Give each card a unique ID so its
+            Front / Back buttons only affect
+            that particular product.
+          */
+
+          const uniqueId =
+            "single-" +
+            String(
+              variant.id ||
+              product.id ||
+              Math.random()
+            ).replace(/\D/g, "");
 
 
           /*
@@ -423,6 +505,43 @@
 
 
           /*
+            Image switcher is only shown when
+            Shopify has at least two images.
+          */
+
+          const switcher =
+            images.length >= 2
+
+              ? `
+
+                <div class="image-switcher">
+
+                  <button
+                    type="button"
+                    class="image-btn active"
+                    data-image="0"
+                    data-target="${uniqueId}"
+                  >
+                    Front
+                  </button>
+
+                  <button
+                    type="button"
+                    class="image-btn"
+                    data-image="1"
+                    data-target="${uniqueId}"
+                  >
+                    Back
+                  </button>
+
+                </div>
+
+              `
+
+              : "";
+
+
+          /*
             IN STOCK
           */
 
@@ -430,12 +549,20 @@
 
             card.innerHTML = `
 
-              <img
-                class="product-image"
-                src="${image}"
-                alt="${product.title}"
-                loading="lazy"
-              >
+              <div class="image-container">
+
+                <img
+                  id="${uniqueId}"
+                  class="product-image"
+                  src="${images[0]}"
+                  alt="${product.title}"
+                  loading="lazy"
+                >
+
+              </div>
+
+
+              ${switcher}
 
 
               <h2>
@@ -473,12 +600,20 @@
 
             card.innerHTML = `
 
-              <img
-                class="product-image"
-                src="${image}"
-                alt="${product.title}"
-                loading="lazy"
-              >
+              <div class="image-container">
+
+                <img
+                  id="${uniqueId}"
+                  class="product-image"
+                  src="${images[0]}"
+                  alt="${product.title}"
+                  loading="lazy"
+                >
+
+              </div>
+
+
+              ${switcher}
 
 
               <h2>
@@ -508,7 +643,74 @@
           }
 
 
+          /*
+            Add card to page
+          */
+
           grid.appendChild(card);
+
+
+          /*
+            Add Front / Back button functionality
+          */
+
+          if (images.length >= 2) {
+
+            const buttons =
+              card.querySelectorAll(
+                ".image-btn"
+              );
+
+
+            const image =
+              card.querySelector(
+                ".product-image"
+              );
+
+
+            buttons.forEach(button => {
+
+              button.addEventListener(
+                "click",
+                () => {
+
+                  const imageIndex =
+                    Number(
+                      button.dataset.image
+                    );
+
+
+                  /*
+                    Change displayed image
+                  */
+
+                  image.src =
+                    images[imageIndex];
+
+
+                  /*
+                    Update active button
+                  */
+
+                  buttons.forEach(btn => {
+
+                    btn.classList.remove(
+                      "active"
+                    );
+
+                  });
+
+
+                  button.classList.add(
+                    "active"
+                  );
+
+                }
+              );
+
+            });
+
+          }
 
         });
 
