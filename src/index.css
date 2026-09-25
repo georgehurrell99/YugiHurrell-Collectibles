@@ -282,3 +282,15 @@ select {
   }
 
 }
+@media (max-width: 800px) {
+
+  /* Align YugiHurrell logo and Collectibles subtitle */
+  header a > div {
+    text-align: left !important;
+  }
+
+  header a > div > div {
+    text-align: left !important;
+  }
+
+}
