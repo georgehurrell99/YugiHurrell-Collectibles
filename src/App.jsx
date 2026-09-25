@@ -172,11 +172,19 @@ backgroundBlendMode: "overlay",
           }
         }
 
-        @media (max-width: 800px) {
-          .site-search-wrap {
-            display: none;
-          }
-        }
+       @media (max-width: 800px) {
+
+  header > div > div {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  header {
+    min-height: auto !important;
+  }
+
+}
       `}</style>
 
     <header
