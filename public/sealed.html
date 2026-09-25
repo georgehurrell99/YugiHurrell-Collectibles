@@ -182,36 +182,60 @@
 
         loading.style.display = "none";
 
-        /*
-          FILTER OUT GRADED SLABS
-        */
+       /*
+  FILTER FOR SEALED PRODUCTS ONLY
 
-        const gradedWords = [
-          "graded",
-          "slab",
-          "psa",
-          "cgc",
-          "bgs",
-          "ars",
-          "ace",
-          "tag",
-          "mgc"
-        ];
+  Exclude:
+  - Single cards
+  - Graded slabs
+*/
 
-        const products = data.products.filter(product => {
+const gradedWords = [
+  "graded",
+  "slab",
+  "psa",
+  "cgc",
+  "bgs",
+  "ars",
+  "ace",
+  "tag",
+  "mgc"
+];
 
-          const productInfo = (
-            (product.title || "") + " " +
-            (product.product_type || "") + " " +
-            (product.tags || "")
-          ).toLowerCase();
+const singleWords = [
+  "single",
+  "singles"
+];
 
-          return !gradedWords.some(word =>
-            productInfo.includes(word)
-          );
+const products = data.products.filter(product => {
 
-        });
+  const title = (product.title || "").toLowerCase();
 
+  const productType = (product.product_type || "").toLowerCase();
+
+  const tags = Array.isArray(product.tags)
+    ? product.tags.join(" ").toLowerCase()
+    : (product.tags || "").toLowerCase();
+
+  const productInfo =
+    title + " " +
+    productType + " " +
+    tags;
+
+  // Remove graded products
+  const isGraded = gradedWords.some(word =>
+    productInfo.includes(word)
+  );
+
+  // Remove single-card products
+  const isSingle = singleWords.some(word =>
+    productInfo.includes(word)
+  );
+
+  // Only show products that are neither graded nor singles
+  return !isGraded && !isSingle;
+
+});
 
         products.forEach(product => {
 
