@@ -128,3 +128,126 @@ select {
     height:450px;
   }
 }
+/* =========================================
+   SITE SEARCH
+========================================= */
+
+.site-search {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin-left: auto;
+}
+
+.site-search-input {
+  width: 100%;
+  height: 46px;
+  padding: 0 18px 0 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 169, 77, 0.45);
+  background: rgba(5, 3, 3, 0.82);
+  color: #f5efe2;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.site-search-input::placeholder {
+  color: #a1a1aa;
+}
+
+.site-search-input:focus {
+  border-color: #d6a94d;
+  box-shadow: 0 0 18px rgba(214, 169, 77, 0.18);
+}
+
+.site-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d6a94d;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.site-search-results {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  background: rgba(10, 5, 5, 0.98);
+  border: 1px solid rgba(214, 169, 77, 0.35);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55);
+  z-index: 1000;
+}
+
+.site-search-result {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(214, 169, 77, 0.12);
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+}
+
+.site-search-result:last-child {
+  border-bottom: none;
+}
+
+.site-search-result:hover {
+  background: rgba(214, 169, 77, 0.10);
+}
+
+.site-search-result img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #050303;
+}
+
+.site-search-result-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.site-search-result-title {
+  color: #f5efe2;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.site-search-result-meta {
+  margin-top: 4px;
+  color: #d6a94d;
+  font-size: 12px;
+}
+
+.site-search-no-results {
+  padding: 18px;
+  text-align: center;
+  color: #a1a1aa;
+  font-size: 14px;
+}
+
+/* =========================================
+   MOBILE SEARCH
+========================================= */
+
+@media (max-width: 1000px) {
+  .site-search {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 800px) {
+  .site-search {
+    display: none;
+  }
+}
