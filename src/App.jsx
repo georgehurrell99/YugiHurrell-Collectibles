@@ -1,7 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchProducts, setSearchProducts] = useState([]);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [searchLoaded, setSearchLoaded] = useState(false);
+
+  const loadSearchProducts = async () => {
+    if (searchLoaded || searchLoading) return;
+
+    setSearchLoading(true);
+
+    try {
+      const response = await fetch("/api/products");
+
+      if (!response.ok) {
+        throw new Error("Unable to load products");
+      }
+
+      const data = await response.json();
+
+      setSearchProducts(Array.isArray(data.products) ? data.products : []);
+      setSearchLoaded(true);
+    } catch (error) {
+      console.error("Search products error:", error);
+    } finally {
+      setSearchLoading(false);
+    }
+  };
+
+  const getProductCategory = (product) => {
+    const title = (product.title || "").toLowerCase();
+    const productType = (product.product_type || "").toLowerCase();
+    const tags = Array.isArray(product.tags)
+      ? product.tags.join(" ").toLowerCase()
+      : (product.tags || "").toLowerCase();
+
+    const info = `${title} ${productType} ${tags}`;
+
+    const gradedWords = [
+      "graded", "slab", "psa", "cgc", "bgs",
+      "ars", "ace", "tag", "mgc"
+    ];
+
+    const singleWords = ["single", "singles"];
+
+    if (gradedWords.some((word) => info.includes(word))) {
+      return { name: "Graded Slabs", href: "/slabs.html" };
+    }
+
+    if (singleWords.some((word) => info.includes(word))) {
+      return { name: "Single Cards", href: "/singles.html" };
+    }
+
+    return { name: "Sealed Product", href: "/sealed.html" };
+  };
+
+  const searchResults = searchQuery.trim()
+    ? searchProducts
+        .filter((product) => {
+          const title = (product.title || "").toLowerCase();
+          const productType = (product.product_type || "").toLowerCase();
+          const tags = Array.isArray(product.tags)
+            ? product.tags.join(" ").toLowerCase()
+            : (product.tags || "").toLowerCase();
+
+          return `${title} ${productType} ${tags}`.includes(
+            searchQuery.trim().toLowerCase()
+          );
+        })
+        .slice(0, 8)
+    : [];
+
   return (
     <div
       style={{
@@ -13,6 +84,101 @@ backgroundBlendMode: "overlay",
         fontFamily: "Arial, sans-serif",
       }}
     >
+      <style>{`
+        .site-search-wrap {
+          position: relative;
+          flex: 1;
+          max-width: 390px;
+          min-width: 220px;
+        }
+
+        .site-search-input {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 12px 42px 12px 16px;
+          border-radius: 999px;
+          border: 1px solid rgba(214,169,77,.55);
+          background: rgba(5,3,3,.82);
+          color: #f5efe2;
+          outline: none;
+          font-size: 14px;
+        }
+
+        .site-search-input::placeholder {
+          color: #a1a1aa;
+        }
+
+        .site-search-results {
+          position: absolute;
+          top: calc(100% + 10px);
+          left: 0;
+          right: 0;
+          background: #100707;
+          border: 1px solid rgba(214,169,77,.45);
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 15px 40px rgba(0,0,0,.55);
+          z-index: 1000;
+        }
+
+        .site-search-result {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 10px 12px;
+          color: white;
+          text-decoration: none;
+          border-bottom: 1px solid rgba(214,169,77,.12);
+        }
+
+        .site-search-result:last-child {
+          border-bottom: none;
+        }
+
+        .site-search-result:hover {
+          background: rgba(214,169,77,.10);
+        }
+
+        .site-search-result img {
+          width: 48px;
+          height: 48px;
+          object-fit: contain;
+          border-radius: 8px;
+          background: #050303;
+          flex-shrink: 0;
+        }
+
+        .site-search-result-title {
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 1.3;
+        }
+
+        .site-search-result-meta {
+          color: #d6a94d;
+          font-size: 12px;
+          margin-top: 3px;
+        }
+
+        .site-search-empty {
+          padding: 16px;
+          color: #a1a1aa;
+          font-size: 14px;
+        }
+
+        @media (max-width: 900px) {
+          .site-search-wrap {
+            max-width: 300px;
+          }
+        }
+
+        @media (max-width: 800px) {
+          .site-search-wrap {
+            display: none;
+          }
+        }
+      `}</style>
+
     <header
   style={{
     position: "sticky",
@@ -81,6 +247,63 @@ marginTop: 4,
           </div>
         </div>
       </a>
+
+      <div className="site-search-wrap">
+        <input
+          className="site-search-input"
+          type="search"
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+          onFocus={loadSearchProducts}
+          placeholder="Search cards, sets & products..."
+          aria-label="Search YugiHurrell Collectibles"
+        />
+
+        {searchQuery.trim() && (
+          <div className="site-search-results">
+            {searchLoading && (
+              <div className="site-search-empty">
+                Searching products...
+              </div>
+            )}
+
+            {!searchLoading && searchResults.length === 0 && (
+              <div className="site-search-empty">
+                No products found for "{searchQuery.trim()}".
+              </div>
+            )}
+
+            {!searchLoading &&
+              searchResults.map((product) => {
+                const category = getProductCategory(product);
+                const variant = product.variants?.[0];
+                const image =
+                  product.image?.src ||
+                  "https://via.placeholder.com/100x100?text=No+Image";
+
+                return (
+                  <a
+                    key={product.id || product.handle || product.title}
+                    className="site-search-result"
+                    href={category.href}
+                  >
+                    <img src={image} alt="" />
+                    <div>
+                      <div className="site-search-result-title">
+                        {product.title}
+                      </div>
+                      <div className="site-search-result-meta">
+                        {variant?.price ? `£${Number(variant.price).toFixed(2)}` : ""}
+                        {variant?.price ? " • " : ""}
+                        {category.name}
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
+          </div>
+        )}
+      </div>
 
       <nav
         style={{
