@@ -246,8 +246,39 @@ select {
   }
 }
 
+/* =========================================
+   MOBILE SEARCH
+========================================= */
+
 @media (max-width: 800px) {
+
   .site-search {
-    display: none;
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 10px 0 0 0;
   }
+
+  .site-search-input {
+    height: 48px;
+    font-size: 15px;
+    padding-left: 44px;
+    padding-right: 16px;
+  }
+
+  .site-search-results {
+    top: calc(100% + 8px);
+    max-height: 65vh;
+    overflow-y: auto;
+  }
+
+  .site-search-result {
+    padding: 12px;
+  }
+
+  .site-search-result img {
+    width: 50px;
+    height: 50px;
+  }
+
 }
