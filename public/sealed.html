@@ -182,61 +182,20 @@
 
         loading.style.display = "none";
 
-       /*
-  FILTER FOR SEALED PRODUCTS ONLY
+         /*
+          FILTER FOR SEALED PRODUCTS ONLY
 
-  Exclude:
-  - Single cards
-  - Graded slabs
-*/
+          Show products whose Shopify product type is
+          "Sealed Product".
+        */
 
-const gradedWords = [
-  "graded",
-  "slab",
-  "psa",
-  "cgc",
-  "bgs",
-  "ars",
-  "ace",
-  "tag",
-  "mgc"
-];
+        const products = (data.products || []).filter(product => {
+          const productType = (product.product_type || "")
+            .trim()
+            .toLowerCase();
 
-const singleWords = [
-  "single",
-  "singles"
-];
-
-const products = data.products.filter(product => {
-
-  const title = (product.title || "").toLowerCase();
-
-  const productType = (product.product_type || "").toLowerCase();
-
-  const tags = Array.isArray(product.tags)
-    ? product.tags.join(" ").toLowerCase()
-    : (product.tags || "").toLowerCase();
-
-  const productInfo =
-    title + " " +
-    productType + " " +
-    tags;
-
-  // Remove graded products
-  const isGraded = gradedWords.some(word =>
-    productInfo.includes(word)
-  );
-
-  // Remove single-card products
-  const isSingle = singleWords.some(word =>
-    productInfo.includes(word)
-  );
-
-  // Only show products that are neither graded nor singles
-  return !isGraded && !isSingle;
-
-});
-
+          return productType === "sealed product";
+        });
         products.forEach(product => {
 
           const variant = product.variants[0];
