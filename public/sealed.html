@@ -27,7 +27,49 @@
       color: #d6a94d;
       margin-bottom: 40px;
     }
+.sort-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
 
+.sort-controls label {
+  color: #d6a94d;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.sort-controls select {
+  background: #100707;
+  color: #f5efe2;
+  border: 1px solid rgba(214, 169, 77, .55);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  min-width: 210px;
+  cursor: pointer;
+  outline: none;
+}
+
+.sort-controls select:focus {
+  border-color: #d6a94d;
+  box-shadow: 0 0 12px rgba(214, 169, 77, .2);
+}
+
+@media (max-width: 600px) {
+  .sort-controls {
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .sort-controls select {
+    flex: 1;
+    min-width: 0;
+  }
+}
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -158,7 +200,19 @@
 
     <div id="error"></div>
 
-    <div class="grid" id="product-grid"></div>
+<div class="sort-controls">
+  <label for="sort-products">Sort By:</label>
+
+  <select id="sort-products">
+    <option value="featured">Featured</option>
+    <option value="low">Price: Low to High</option>
+    <option value="high">Price: High to Low</option>
+    <option value="az">Name: A to Z</option>
+    <option value="za">Name: Z to A</option>
+  </select>
+</div>
+
+<div class="grid" id="product-grid"></div>
 
   </div>
 
@@ -196,6 +250,7 @@
 
           return productType === "sealed product";
         });
+        const productCards = [];
         products.forEach(product => {
 
           const variant = product.variants[0];
@@ -273,11 +328,55 @@
 
           }
 
-          grid.appendChild(card);
+         productCards.push({
+  card: card,
+  price: Number(variant.price) || 0,
+  title: (product.title || "").toLowerCase()
+});
 
         });
 
+// SORT PRODUCTS
 
+const sortSelect = document.getElementById("sort-products");
+
+function renderSortedProducts() {
+
+  const sortedProducts = [...productCards];
+
+  switch (sortSelect.value) {
+
+    case "low":
+      sortedProducts.sort((a, b) => a.price - b.price);
+      break;
+
+    case "high":
+      sortedProducts.sort((a, b) => b.price - a.price);
+      break;
+
+    case "az":
+      sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+
+    case "za":
+      sortedProducts.sort((a, b) => b.title.localeCompare(a.title));
+      break;
+
+    default:
+      // Keep original Shopify product order
+      break;
+  }
+
+  sortedProducts.forEach(item => {
+    grid.appendChild(item.card);
+  });
+
+}
+
+sortSelect.addEventListener("change", renderSortedProducts);
+
+// Display products in their default order
+renderSortedProducts();
         if (products.length === 0) {
 
           grid.innerHTML = `
