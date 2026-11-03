@@ -1043,6 +1043,71 @@
 
     });
 
+// AUTOMATIC SHOPIFY SOLD-OUT STATUS
+document.addEventListener("DOMContentLoaded", async function () {
+  try {
+    const response = await fetch("/api/products", {
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error("Could not retrieve Shopify products.");
+    }
+
+    const data = await response.json();
+    const shopifyProducts = data.products || [];
+
+    // Match Shopify products using their URL handles.
+    const productsByHandle = new Map(
+      shopifyProducts.map(product => [product.handle, product])
+    );
+
+    // Only target actual Shopify product links, not the
+    // Front and Rear image buttons on your ARS slabs.
+    const buyButtons = document.querySelectorAll(
+      'a.buy-btn[href*="/products/"]'
+    );
+
+    buyButtons.forEach(function (button) {
+      const productUrl = new URL(button.href);
+      const handle = productUrl.pathname
+        .split("/products/")[1]
+        ?.split("/")[0];
+
+      if (!handle) return;
+
+      const product = productsByHandle.get(handle);
+
+      // Leave the button unchanged if no Shopify match is found.
+      if (!product || !Array.isArray(product.variants)) return;
+
+      // A product is available if at least one variant:
+      // - does not track inventory, or
+      // - has stock remaining, or
+      // - allows selling when out of stock.
+      const isAvailable = product.variants.some(function (variant) {
+        return (
+          !variant.inventory_management ||
+          Number(variant.inventory_quantity) > 0 ||
+          variant.inventory_policy === "continue"
+        );
+      });
+
+      if (!isAvailable) {
+        const soldLabel = document.createElement("div");
+
+        soldLabel.className = "sold-out";
+        soldLabel.textContent = "Sold Out";
+
+        button.replaceWith(soldLabel);
+      }
+    });
+
+  } catch (error) {
+    console.error("Shopify slab stock update failed:", error);
+  }
+});
+
   </script>
 
 </body>
