@@ -328,528 +328,362 @@
   id="product-grid"
 ></div>
 
-
-    <div
-      class="grid"
-      id="product-grid"
-    ></div>
-
   </div>
 
 
-  <script>
+ ```html
+<script>
 
-    /*
-      ============================================================
-      SHOPIFY SINGLES
-      ============================================================
+  /*
+    SHOPIFY SINGLES
+    Only products with the exact tag "singles"
+    will appear on this page.
+  */
 
-      Only Shopify products with the exact tag:
+  function hasTag(product, wantedTag) {
 
-      singles
+    const tags = Array.isArray(product.tags)
+      ? product.tags
+      : String(product.tags || "")
+          .split(",")
+          .map(tag => tag.trim());
 
-      will appear on this page.
-    */
+    return tags.some(
+      tag => tag.toLowerCase() === wantedTag.toLowerCase()
+    );
 
-
-    function hasTag(product, wantedTag) {
-
-      const tags = Array.isArray(product.tags)
-
-        ? product.tags
-
-        : String(product.tags || "")
-            .split(",")
-            .map(tag => tag.trim());
+  }
 
 
-      return tags.some(
-        tag =>
-          tag.toLowerCase() === wantedTag.toLowerCase()
+  async function loadProducts() {
+
+    const grid = document.getElementById("product-grid");
+    const loading = document.getElementById("loading");
+    const error = document.getElementById("error");
+    const sortSelect = document.getElementById("sort-products");
+
+    try {
+
+      // Get products from Shopify API
+
+      const response = await fetch("/api/products");
+
+      if (!response.ok) {
+        throw new Error("Unable to load Shopify products");
+      }
+
+      const data = await response.json();
+
+      loading.style.display = "none";
+
+
+      // ONLY SHOW PRODUCTS TAGGED "singles"
+
+      const products = (data.products || []).filter(product =>
+        hasTag(product, "singles")
       );
 
-    }
+
+      // Store product cards for sorting
+
+      const productCards = [];
 
 
-    async function loadProducts() {
+      // No singles found
 
-      const grid =
-        document.getElementById("product-grid");
+      if (products.length === 0) {
 
-      const loading =
-        document.getElementById("loading");
+        grid.innerHTML = `
+          <div class="empty">
+            <strong>No single cards available yet.</strong>
+            <br><br>
+            Add your cards through Shopify and give each product the tag:
+            <br><br>
+            <strong>singles</strong>
+          </div>
+        `;
 
-      const error =
-        document.getElementById("error");
+        sortSelect.disabled = true;
+        return;
 
-
-      try {
-
-        /*
-          Get products from your existing Shopify API.
-        */
-
-        const response =
-          await fetch("/api/products");
+      }
 
 
-        if (!response.ok) {
+      // DISPLAY EACH SHOPIFY SINGLE
 
-          throw new Error(
-            "Unable to load Shopify products"
-          );
+      products.forEach(product => {
 
+        const variant = product.variants?.[0];
+
+        if (!variant) return;
+
+        const price = Number(variant.price || 0).toFixed(2);
+
+        const stock = Number(variant.inventory_quantity || 0);
+
+
+        // Get all Shopify images
+
+        const images = Array.isArray(product.images)
+          ? product.images
+              .map(image =>
+                typeof image === "string" ? image : image?.src
+              )
+              .filter(Boolean)
+          : [];
+
+
+        // Fallback to primary image
+
+        if (images.length === 0 && product.image?.src) {
+          images.push(product.image.src);
         }
 
 
-        const data =
-          await response.json();
+        // Final image fallback
 
-
-        loading.style.display = "none";
-
-
-        /*
-          ONLY SHOW PRODUCTS TAGGED "singles"
-        */
-
-        const products =
-          (data.products || []).filter(
-            product =>
-              hasTag(product, "singles")
+        if (images.length === 0) {
+          images.push(
+            "https://via.placeholder.com/300x400?text=No+Image"
           );
+        }
 
 
-        /*
-          No singles found
-        */
+        // Unique ID for each card
 
-        if (products.length === 0) {
+        const uniqueId =
+          "single-" +
+          String(variant.id || product.id || Math.random())
+            .replace(/\D/g, "");
 
-          grid.innerHTML = `
 
-            <div class="empty">
+        // Create product card
 
-              <strong>No single cards available yet.</strong>
+        const card = document.createElement("div");
 
-              <br><br>
+        card.className = "card";
 
-              Add your cards through Shopify and give
-              each product the tag:
 
-              <br><br>
+        // Front / Back buttons
 
-              <strong>singles</strong>
+        const switcher = images.length >= 2
+          ? `
+            <div class="image-switcher">
+
+              <button
+                type="button"
+                class="image-btn active"
+                data-image="0"
+              >
+                Front
+              </button>
+
+              <button
+                type="button"
+                class="image-btn"
+                data-image="1"
+              >
+                Back
+              </button>
+
+            </div>
+          `
+          : "";
+
+
+        // IN STOCK
+
+        if (stock > 0) {
+
+          card.innerHTML = `
+
+            <div class="image-container">
+
+              <img
+                id="${uniqueId}"
+                class="product-image"
+                src="${images[0]}"
+                alt="${product.title}"
+                loading="lazy"
+              >
 
             </div>
 
-          `;
+            ${switcher}
 
-          return;
+            <h2>${product.title}</h2>
+
+            <p>£${price}</p>
+
+            <p>${stock} In Stock</p>
+
+            <a
+              class="buy-btn"
+              href="https://cttn1c-aj.myshopify.com/cart/${variant.id}:1"
+            >
+              Buy Now
+            </a>
+
+          `;
 
         }
 
 
-        /*
-          Display each Shopify single
-        */
-const productCards = [];
-        products.forEach(product => {
+        // SOLD OUT
 
-          /*
-            Use the first Shopify variant
-          */
+        else {
 
-          const variant =
-            product.variants?.[0];
+          card.innerHTML = `
 
+            <div class="image-container">
 
-          if (!variant) {
-            return;
-          }
-
-
-          /*
-            Price from Shopify
-          */
-
-          const price =
-            Number(variant.price || 0)
-              .toFixed(2);
-
-
-          /*
-            Shopify inventory quantity
-          */
-
-          const stock =
-            Number(
-              variant.inventory_quantity || 0
-            );
-
-
-          /*
-            Get all Shopify images.
-
-            First image = Front
-            Second image = Back
-          */
-
-          const images =
-            Array.isArray(product.images)
-              ? product.images
-                  .map(image =>
-                    typeof image === "string"
-                      ? image
-                      : image?.src
-                  )
-                  .filter(Boolean)
-              : [];
-
-
-          /*
-            Fallback to primary image if
-            product.images isn't available.
-          */
-
-          if (
-            images.length === 0 &&
-            product.image?.src
-          ) {
-
-            images.push(
-              product.image.src
-            );
-
-          }
-
-
-          /*
-            Final image fallback
-          */
-
-          if (images.length === 0) {
-
-            images.push(
-              "https://via.placeholder.com/300x400?text=No+Image"
-            );
-
-          }
-
-
-          /*
-            Give each card a unique ID so its
-            Front / Back buttons only affect
-            that particular product.
-          */
-
-          const uniqueId =
-            "single-" +
-            String(
-              variant.id ||
-              product.id ||
-              Math.random()
-            ).replace(/\D/g, "");
-
-
-          /*
-            Create product card
-          */
-
-          const card =
-            document.createElement("div");
-
-
-          card.className = "card";
-
-
-          /*
-            Image switcher is only shown when
-            Shopify has at least two images.
-          */
-
-          const switcher =
-            images.length >= 2
-
-              ? `
-
-                <div class="image-switcher">
-
-                  <button
-                    type="button"
-                    class="image-btn active"
-                    data-image="0"
-                    data-target="${uniqueId}"
-                  >
-                    Front
-                  </button>
-
-                  <button
-                    type="button"
-                    class="image-btn"
-                    data-image="1"
-                    data-target="${uniqueId}"
-                  >
-                    Back
-                  </button>
-
-                </div>
-
-              `
-
-              : "";
-
-
-          /*
-            IN STOCK
-          */
-
-          if (stock > 0) {
-
-            card.innerHTML = `
-
-              <div class="image-container">
-
-                <img
-                  id="${uniqueId}"
-                  class="product-image"
-                  src="${images[0]}"
-                  alt="${product.title}"
-                  loading="lazy"
-                >
-
-              </div>
-
-
-              ${switcher}
-
-
-              <h2>
-                ${product.title}
-              </h2>
-
-
-              <p>
-                £${price}
-              </p>
-
-
-              <p>
-                ${stock} In Stock
-              </p>
-
-
-              <a
-                class="buy-btn"
-                href="https://cttn1c-aj.myshopify.com/cart/${variant.id}:1"
+              <img
+                id="${uniqueId}"
+                class="product-image"
+                src="${images[0]}"
+                alt="${product.title}"
+                loading="lazy"
               >
-                Buy Now
-              </a>
 
-            `;
+            </div>
 
-          }
+            ${switcher}
 
+            <h2>${product.title}</h2>
 
-          /*
-            SOLD OUT
-          */
+            <p>£${price}</p>
 
-          else {
+            <p class="sold-out-text">Sold Out</p>
 
-            card.innerHTML = `
+            <button
+              class="buy-btn sold-out"
+              disabled
+            >
+              Sold Out
+            </button>
 
-              <div class="image-container">
+          `;
 
-                <img
-                  id="${uniqueId}"
-                  class="product-image"
-                  src="${images[0]}"
-                  alt="${product.title}"
-                  loading="lazy"
-                >
-
-              </div>
+        }
 
 
-              ${switcher}
+        // Store card details for sorting
 
-
-              <h2>
-                ${product.title}
-              </h2>
-
-
-              <p>
-                £${price}
-              </p>
-
-
-              <p class="sold-out-text">
-                Sold Out
-              </p>
-
-
-              <button
-                class="buy-btn sold-out"
-                disabled
-              >
-                Sold Out
-              </button>
-
-            `;
-
-          }
-
-
-          /*
-  Store card for sorting
-*/
-
-productCards.push({
-  card: card,
-  price: Number(variant.price) || 0,
-  title: (product.title || "").toLowerCase()
-});
-
-
-          /*
-            Add Front / Back button functionality
-          */
-
-          if (images.length >= 2) {
-
-            const buttons =
-              card.querySelectorAll(
-                ".image-btn"
-              );
-
-
-            const image =
-              card.querySelector(
-                ".product-image"
-              );
-
-
-            buttons.forEach(button => {
-
-              button.addEventListener(
-                "click",
-                () => {
-
-                  const imageIndex =
-                    Number(
-                      button.dataset.image
-                    );
-
-
-                  /*
-                    Change displayed image
-                  */
-
-                  image.src =
-                    images[imageIndex];
-
-
-                  /*
-                    Update active button
-                  */
-
-                  buttons.forEach(btn => {
-
-                    btn.classList.remove(
-                      "active"
-                    );
-
-                  });
-
-
-                  button.classList.add(
-                    "active"
-                  );
-
-                }
-              );
-
-            });
-
-          }
-
+        productCards.push({
+          card: card,
+          price: Number(variant.price) || 0,
+          title: (product.title || "").toLowerCase()
         });
 
 
+        // FRONT / BACK IMAGE FUNCTIONALITY
+
+        if (images.length >= 2) {
+
+          const buttons = card.querySelectorAll(".image-btn");
+          const image = card.querySelector(".product-image");
+
+          buttons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+              const imageIndex = Number(button.dataset.image);
+
+              image.src = images[imageIndex];
+
+              buttons.forEach(btn => {
+                btn.classList.remove("active");
+              });
+
+              button.classList.add("active");
+
+            });
+
+          });
+
+        }
+
+      });
+
+
+      // SORT PRODUCTS
+
+      function renderSortedProducts() {
+
+        const sortedProducts = [...productCards];
+
+        switch (sortSelect.value) {
+
+          case "low":
+
+            sortedProducts.sort((a, b) => a.price - b.price);
+            break;
+
+          case "high":
+
+            sortedProducts.sort((a, b) => b.price - a.price);
+            break;
+
+          case "az":
+
+            sortedProducts.sort((a, b) =>
+              a.title.localeCompare(b.title)
+            );
+            break;
+
+          case "za":
+
+            sortedProducts.sort((a, b) =>
+              b.title.localeCompare(a.title)
+            );
+            break;
+
+          default:
+
+            // Keep original Shopify product order
+            break;
+
+        }
+
+        // Display products in the selected order
+
+        sortedProducts.forEach(item => {
+          grid.appendChild(item.card);
+        });
+
       }
 
-// SORT PRODUCTS
 
-const sortSelect = document.getElementById("sort-products");
+      // Listen for sorting changes
 
-function renderSortedProducts() {
-
-  const sortedProducts = [...productCards];
-
-  switch (sortSelect.value) {
-
-    case "low":
-      sortedProducts.sort((a, b) => a.price - b.price);
-      break;
-
-    case "high":
-      sortedProducts.sort((a, b) => b.price - a.price);
-      break;
-
-    case "az":
-      sortedProducts.sort((a, b) =>
-        a.title.localeCompare(b.title)
-      );
-      break;
-
-    case "za":
-      sortedProducts.sort((a, b) =>
-        b.title.localeCompare(a.title)
-      );
-      break;
-
-    default:
-      // Original Shopify product order
-      break;
-  }
-
-  sortedProducts.forEach(item => {
-    grid.appendChild(item.card);
-  });
-
-}
-
-sortSelect.addEventListener("change", renderSortedProducts);
-
-// Show products in original order
-renderSortedProducts();
-      catch (err) {
-
-        console.error(err);
+      sortSelect.addEventListener("change", renderSortedProducts);
 
 
-        loading.style.display =
-          "none";
+      // Display products in original order
+
+      renderSortedProducts();
 
 
-        error.textContent =
-          "Unable to load products. Please try again later.";
+    } catch (err) {
 
-      }
+      console.error(err);
+
+      loading.style.display = "none";
+
+      error.textContent =
+        "Unable to load products. Please try again later.";
 
     }
 
+  }
 
-    /*
-      Load Shopify singles when page opens
-    */
 
-    loadProducts();
+  // Load Shopify singles when page opens
 
-  </script>
+  loadProducts();
 
+</script>
+```
 </body>
 
 </html>
